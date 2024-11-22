@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeAdota Cadastro</title>
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="tela-inicial"><h1>Me Adota</h1></a>
+    </header>
+    
+    <main>
+        <form class="columns wraps" onsubmit="return validarSenha() " >
+            <h1 class="form-titulo">Cadastro</h1>
+            
+
+            <div class="form-inputs columns wraps" >
+                <div class="form-campos wraps">
+                    <input class="campo" id="nome" type="text" placeholder="Nome" required>
+                    <input class="campo maior" id="email" type="text" placeholder="Email"required>
+                    <input class="campo" id="telefone" type="text" placeholder="Telefone"required>
+                    
+                    <input class="campo" id="senha" type="password" placeholder="Senha" name="" id=""required>
+                    <div id="error-message" style="color: red;">
+                            
+                    </div>
+                
+                    
+                </div>
+           
+
+                <div class="form-endereco wraps">
+                    <input class="campo" id="estado" type="text" placeholder="Estado"required>
+                    <input class="campo" id="cidade" type="text" placeholder="Cidade"required>
+                    <input class="campo maior" id="bairro" type="text" placeholder="Bairro"required>
+                    <input class="campo" id="rua" type="text" placeholder="Rua"required>
+                    <input class="campo" id="numero" type="text" placeholder="Número"required>
+                    <input class="campo" id="complemento" type="text" placeholder="Complemento"required>
+                </div>
+
+                <div class="form-boxes wraps">
+                    <div class="form-genero columns wraps">
+                        <h2>Gênero</h2>
+
+                        <div class="genero-opcoes columns">
+                            <div class="opcao">
+                                <input type="radio" name="genero" id="check-masculino">
+                                <label for="check-masculino">Masculino</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="genero" id="check-feminino">
+                                <label for="check-feminino">Feminino</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-preferencias columns wraps">
+                        <h2>Preferências</h2>
+
+                        <div class="form-inputs columns wraps">
+                            <input class="campo" id="raca_desejada" type="text" placeholder="Raça Desejada">
+                        </div>
+
+                    
+
+
+
+                        <div class="preferencias-opcoes columns">
+
+                            <div class="opcao">
+                                <input type="checkbox" name="preferencia" id="preferencia-masculino">
+                                <label for="preferencia-masculino">Masculino</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="checkbox" name="preferencia" id="preferencia-feminino">
+                                <label for="preferencia-feminino">Feminino</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-botoes wraps">
+                    <a href="index.html" class="botao">Voltar</a>
+                    <button id="cadastro"class="botao" type="submit">Cadastrar</button>
+
+                
+            </div>
+
+            <p>Já possui uma conta? <a class="link" href="login.html">Logar</a></p>
+        </form>
+    </main>
+
+    <script src="js/Usuario.js"></script>
+</body>
+</html>

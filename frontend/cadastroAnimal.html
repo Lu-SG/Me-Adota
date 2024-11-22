@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeAdota Cadastro</title>
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/cadastroAnimal.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="tela-inicial"><h1>Me Adota</h1></a>
+    </header>
+    
+    <main>
+        <form class="columns wraps" action="cadastrar-animal" method="post" enctype="multipart/form-data">
+            <h1 class="form-titulo">Cadastro de Animais</h1>
+            
+
+            <div class="form-inputs columns wraps">
+                <div class="form-campos wraps">
+                    <input class="campo" id="nome" type="text" placeholder="Nome" required>
+                    <input class="campo" id="idade" type="text" placeholder="Idade" required>
+
+                    <div class="form-campos wraps lista-container">
+
+                        <div class="form-campos wraps form-lista">
+                            <label for="especie-animal">Espécie:</label>
+                            <div class="form-campos wraps form-lista lista">
+                                <select class="select-front" id="especie-animal" name="especie-animal" id="especie-animal" required>
+                                    <option value="" selected hidden disabled>Selecione</option>
+                                    <option value="">Cachorro</option>
+                                    <option value="">Gato</option>
+                                    <option value="">Hamster</option>
+                                    <option value="vira-lata">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-campos wraps form-lista">
+                            <label for="raca-animal">Raça:</label>
+                            <div class="form-campos wraps form-lista lista">
+                                <input class="campo" id="raca-animal" type="text" placeholder="Raça" required>
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="form-campos wraps" id="container-data-resgate">
+                    <label for="data-resgate" id="resgate-texto">Data do Resgate:</label>
+                    <div class="form-campos wraps" id="data-resgate">
+                        <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input">
+                    </div>
+                </div>
+
+                <div class="form-endereco wraps">
+                    <h2 id="endereco-abrigo">Endereço do abrigo:</h2>
+                    <div class="form-campos wraps">
+                        <input class="campo" id="cidade" type="text" placeholder="Cidade" required>
+                        <input class="campo" id="estado" type="text" placeholder="Estado"required>
+                        <input class="campo maior" id="logradouro" type="text" placeholder="Logradouro"required>
+                        <input class="campo" id="numero" type="text" placeholder="Número"required>
+                        <input class="campo" id="complemento" type="text" placeholder="Complemento"required>
+                    </div>
+                </div>
+
+                <div class="form-campos wraps container-imagem">    
+                    <label for="imagem" id="texto-imagem">Insira uma imagem do pet:</label>
+                    <input type="file" id="inserir-imagem" name="imagem" accept="image/*" onchange="previewImage(event)">
+                    <br>
+                    <img id="preview" src="" alt="Pré-visualização" style="max-width: 300px; display: none;">
+                    <br>
+                </div>
+
+                <div class="form-boxes wraps">
+                    <div class="form-genero columns wraps">
+                        <h2>Gênero</h2>
+
+                        <div class="genero-opcoes columns">
+                            <div class="opcao">
+                                <input type="radio" name="genero" id="check-masculino">
+                                <label for="check-masculino">Masculino</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="genero" id="check-feminino">
+                                <label for="check-feminino">Feminino</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-preferencias columns wraps">
+                        <h2>Necessidades especiais</h2>
+
+                        <div class="preferencias-opcoes columns">
+
+                            <div class="opcao">
+                                <input type="radio" name="preferencia" id="preferencia-possui">
+                                <label for="preferencia-possui">Possui</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="preferencia" id="preferencia-nao-possui">
+                                <label for="preferencia-nao-possui">Não possui</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="descricao-necessidade" style="display:none;">
+                        <label for="descricao">Descreva a necessidade especial deste pet: <span class="texto-aside">(até 250 caractéres)</span></label>
+                        <textarea class="campo" id="descricao" rows="4" cols="50" placeholder="Deficiência..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-botoes wraps">
+                    <a href="index.html" class="botao">Voltar</a>
+                    <input id="cadastro"class="botao" type="submit" value="Cadastrar" onclick="if(validarData()) cadastrarAnimal();">
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="js/Pet.js"></script>
+    <script src="js/PetFront.js"></script>
+</body>
+</html>

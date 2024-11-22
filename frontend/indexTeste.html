@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais Resgatados</title>
+    <link rel="stylesheet" href="css/style.css" >
+</head>
+<body>
+    <div class="container">
+        <h1>Animais Resgatados</h1>
+        
+        <!-- Formulário para adicionar um novo animal -->
+        <form id="animalForm">
+            <h2>Adicionar Novo Animal</h2>
+            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="number" id="idade" placeholder="Idade" required>
+            <input type="text" id="especie" placeholder="Espécie" required>
+            <input type="text" id="raca" placeholder="Raça" required>
+            <input type="text" id="sexo" placeholder="Sexo (M/F)" required>
+            <input type="text" id="porte" placeholder="Porte (P, M, G, XG)" required>
+            <input type="text" id="numero" placeholder="Número" required>
+            <input type="text" id="bairro" placeholder="Bairro" required>
+            <input type="text" id="cidade" placeholder="Cidade" required>
+            <input type="text" id="estado" placeholder="Estado (UF)" required>
+            <input type="text" id="cep" placeholder="CEP" required>
+            <label for="data_resgate">Data de Resgate:</label>
+            <input type="date" id="data_resgate" required>
+            <label for="convivencia">Convivência:</label>
+            <input type="checkbox" id="convivencia">
+            <label for="doenca_cronica">Doença Crônica:</label>
+            <input type="checkbox" id="doenca_cronica">
+            <label for="doenca_transmissivel">Doença Transmissível:</label>
+            <input type="checkbox" id="doenca_transmissivel">
+            <label for="necessidade_tratamento">Necessidade de Tratamento:</label>
+            <input type="checkbox" id="necessidade_tratamento">
+            <label for="castrado">Castrado:</label>
+            <input type="checkbox" id="castrado">
+            <textarea id="desc_geral" placeholder="Descrição Geral" required></textarea>
+            <button type="submit">Adicionar Animal</button>
+        </form>
+
+        <!-- Lista de animais -->
+        <h2>Lista de Animais</h2>
+        <div id="animalList"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
