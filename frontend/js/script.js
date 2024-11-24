@@ -50,24 +50,75 @@ async function addAnimal(event) {
     const raca = document.getElementById('raca').value;
     const idade = document.getElementById('idade').value;
     const porte = document.getElementById('porte').value;
-    const data_resgate = document.getElementById('').value;
+    const data_resgate = document.getElementById('data-resgate-input');
 
-    const cidade = document.getElementById('').value;
-    const estado = document.getElementById('').value;
-    const rua = document.getElementById('').value;
-    const numero = document.getElementById('').value;
-    const complemento = document.getElementById('').value;
-
-    const sexo = document.getElementById('').value;
-    const doenca_cronica = document.getElementById('').value;
-    const necessidadeTempo = document.getElementById('').value;
-    const convivencia = document.getElementById('').value;
-    const Necessidade = document.getElementById('').value;
+    const cidade = document.getElementById('cidade').value;
+    const estado = document.getElementById('estado').value;
+    const rua = document.getElementById('rua').value;
+    const numero = document.getElementById('numero').value;
+    const complemento = document.getElementById('complemento').value;
 
 
 
 
-    const newAnimal = { nome, especie, raca, idade, porte };
+
+    let sexos = document.querySelectorAll('input[name="sexo"]');
+    
+    const sexo = '';
+    
+    for(const opcao of sexos){
+        if(opcao.checked){
+            sexo = opcao.value;
+            break;
+        }
+    }
+
+    let doencaBoolean = document.querySelectorAll('input[name="doenca-cronica"]');
+    
+    const doenca_cronica = '';
+    
+    for(const opcao of doencaBoolean){
+        if(opcao.checked){
+            doenca_cronica = opcao.value;
+            break;
+        }
+    }
+
+    let necessidadeTempoBoolean = document.querySelectorAll('input[name="atencao"]');
+    
+    const necessidadeTempo = '';
+    
+    for(const opcao of necessidadeTempoBoolean){
+        if(opcao.checked){
+            necessidadeTempo = opcao.value;
+            break;
+        }
+    }
+
+    let convivenciaBoolean = document.querySelectorAll('input[name="convivencia"]');
+    
+    const convivencia = '';
+    
+    for(const opcao of convivenciaBoolean){
+        if(opcao.checked){
+            convivencia = opcao.value;
+            break;
+        }
+    }
+
+    let necessidadeBoolean = document.querySelectorAll('input[name="convivencia"]');
+    
+    const necessidade = '';
+    
+    for(const opcao of necessidadeBoolean){
+        if(opcao.checked){
+            necessidade = opcao.value;
+            break;
+        }
+    }
+
+
+    const newAnimal = { nome, especie, raca, idade, porte, data_resgate, cidade, estado, rua, numero, complemento, sexo, doenca_cronica, necessidadeTempo, convivencia, necessidade };
 
     try {
         const response = await fetch(API_URL, {
@@ -91,4 +142,4 @@ async function addAnimal(event) {
 document.addEventListener('DOMContentLoaded', fetchAnimals);
 
 // Adiciona evento para o formulário
-document.getElementById('animalForm').addEventListener('submit', addAnimal);
+document.getElementById('cadastroAnimal').addEventListener('submit', addAnimal);
