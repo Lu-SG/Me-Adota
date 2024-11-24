@@ -50,6 +50,22 @@ async function addAnimal(event) {
     const raca = document.getElementById('raca').value;
     const idade = document.getElementById('idade').value;
     const porte = document.getElementById('porte').value;
+    const data_resgate = document.getElementById('').value;
+
+    const cidade = document.getElementById('').value;
+    const estado = document.getElementById('').value;
+    const rua = document.getElementById('').value;
+    const numero = document.getElementById('').value;
+    const complemento = document.getElementById('').value;
+
+    const sexo = document.getElementById('').value;
+    const doenca_cronica = document.getElementById('').value;
+    const necessidadeTempo = document.getElementById('').value;
+    const convivencia = document.getElementById('').value;
+    const Necessidade = document.getElementById('').value;
+
+
+
 
     const newAnimal = { nome, especie, raca, idade, porte };
 
