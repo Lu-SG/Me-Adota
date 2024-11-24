@@ -4,7 +4,7 @@ import animalRoutes from './routes/routes.js';
 
 const app = express(); // Initialize the app
 
-const allowedOrigins = ['http://localhost:8080', 'http://127.0.0.1:8080'];
+const allowedOrigins = ['http://localhost:8080', 'http://127.0.0.1:8080',  'http://127.0.0.1:5500'];
 
 app.use(
     cors({

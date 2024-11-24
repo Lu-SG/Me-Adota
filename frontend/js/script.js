@@ -32,23 +32,7 @@ async function fetchAnimals() {
                 <p>Doença Transmissível: ${animal.doenca_transmissivel ? 'Sim' : 'Não'}</p>
                 <p>Necessidade de Tratamento: ${animal.necessidade_tratamento ? 'Sim' : 'Não'}</p>
                 <p>Descrição Geral: ${animal.desc_geral}</p>
-                <p>Espécie: ${animal.especie}</p>
-                <p>Raça: ${animal.raca}</p>
-                <p>Idade: ${animal.idade}</p>
-                <p>Porte: ${animal.porte}</p>
-                <p>Sexo: ${animal.sexo}</p>
-                <p>Castrado: ${animal.castrado ? 'Sim' : 'Não'}</p>
-                <p>Número: ${animal.numero}</p>
-                <p>Bairro: ${animal.bairro}</p>
-                <p>Cidade: ${animal.cidade}</p>
-                <p>Estado: ${animal.estado}</p>
-                <p>CEP: ${animal.cep}</p>
-                <p>Data de Resgate: ${animal.data_resgate}</p>
-                <p>Convivência: ${animal.convivencia ? 'Sim' : 'Não'}</p>
-                <p>Doença Crônica: ${animal.doenca_cronica ? 'Sim' : 'Não'}</p>
-                <p>Doença Transmissível: ${animal.doenca_transmissivel ? 'Sim' : 'Não'}</p>
-                <p>Necessidade de Tratamento: ${animal.necessidade_tratamento ? 'Sim' : 'Não'}</p>
-                <p>Descrição Geral: ${animal.desc_geral}</p>
+                
             `;
             animalList.appendChild(animalCard);
         });
