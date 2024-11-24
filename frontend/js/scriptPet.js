@@ -44,7 +44,7 @@ async function addAnimal(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
-    const raca = document.getElementById('raca-animal').value;
+    let raca = document.getElementById('raca-animal').value;
     const idade = document.getElementById('idade').value;
     const data_resgate = document.getElementById('data-resgate-input').value;
 
@@ -117,19 +117,24 @@ async function addAnimal(event) {
         }
     }
 
-    let necessidadeBoolean = document.querySelectorAll('input[name="convivencia"]');
+    let necessidadeBoolean = document.querySelectorAll('input[name="necessidade"]');
     
-    let necessidade = '';
+    let necessidade_especial = '';
     
     for(const opcao of necessidadeBoolean){
         if(opcao.checked){
-            necessidade = opcao.value;
+            necessidade_especial = opcao.value;
             break;
         }
     }
 
+    raca = String(raca).charAt(0).toUpperCase() + String(raca).slice(1).toLowerCase();
 
-    const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade, necessidade_atencao };
+    
+
+
+
+    const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao };
 
     try {
         const response = await fetch(API_URL, {
@@ -148,7 +153,13 @@ async function addAnimal(event) {
     }
 }
 
+
+
+
 // Carrega os animais ao abrir a página
 
 // Adiciona evento para o formulário
+
 document.getElementById('form-animal').addEventListener('submit', addAnimal);
+
+

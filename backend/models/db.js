@@ -22,11 +22,30 @@ export async function executeQuery(query, params) {
     }
 }
 
-export async function CadastroUsuario(nome, email, senha, data_nascimento, rua, numero, bairro, cidade, estado, cep) {
+export async function CadastroUsuario(
+    nome, 
+    email, 
+    telefone,
+    senha, 
+    estado,  
+    cidade, 
+    bairro, 
+    rua,
+    numero, 
+    complemento,
+    especie_desejada,
+    porte_desejado,
+    sexo_desejado,
+    aceita_necessidade_especial,
+    aceita_doenca_cronica,
+    ja_tem_outros_animais,
+    tem_tempo_pro_animal,
+)
+     {
     const query = `
-        INSERT INTO usuarios(nome, email, senha, data_nascimento, rua, numero, bairro, cidade, estado, cep)
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
-    const params = [nome, email, senha, data_nascimento, rua, numero, bairro, cidade, estado, cep];
+        INSERT INTO usuarios(nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal )
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)`;
+    const params = [nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal ];
     try {
         await executeQuery(query, params);
         console.log("Usuário cadastrado com sucesso!");
@@ -50,19 +69,19 @@ export async function CadastroAnimal(
     data_resgate,
     convivencia,
     doenca_cronica,
-    necessidade,
+    necessidade_especial,
     necessidade_atencao,
 ) {
     const query = `
         INSERT INTO animais (nome, idade, especie, raca, sexo, porte, 
         numero, rua, cidade, estado, complemento, data_resgate, convivencia, 
-        doenca_cronica, necessidade, necessidade_atencao)
+        doenca_cronica, necessidade_especial, necessidade_atencao)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 
         $10, $11, $12, $13, $14, $15, $16)`;
     const params = [
         nome, idade, especie, raca, sexo, porte,
         numero, rua, cidade, estado, complemento, data_resgate, convivencia,
-        doenca_cronica, necessidade, necessidade_atencao
+        doenca_cronica, necessidade_especial, necessidade_atencao
     ];
     try {
         await executeQuery(query, params);

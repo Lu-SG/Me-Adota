@@ -21,7 +21,7 @@
     </header>
     
     <main>
-        <form id="form-animal"class="columns wraps" action="cadastrar-animal" method="post" enctype="multipart/form-data">
+        <form id="form-animal"class="columns wraps" action="cadastroAnimal" method="post" enctype="multipart/form-data">
             <h1 class="form-titulo">Cadastro de Animais</h1>
             
 
@@ -37,10 +37,10 @@
                             <div class="form-campos wraps form-lista lista">
                                 <select class="select-front" id="especie-animal" name="especie-animal" id="especie-animal" required>
                                     <option value="" selected hidden disabled>Selecione</option>
-                                    <option value="">Cachorro</option>
-                                    <option value="">Gato</option>
-                                    <option value="">Hamster</option>
-                                    <option value="vira-lata">Outro</option>
+                                    <option value="Cachorro">Cachorro</option>
+                                    <option value="Gato">Gato</option>
+                                    <option value="Hamster">Hamster</option>
+                                    <option value="outro">Outro</option>
                                 </select>
                             </div>
                         </div>
@@ -89,12 +89,12 @@
 
                         <div class="genero-opcoes columns">
                             <div class="opcao">
-                                <input type="radio" name="sexo" id="check-macho">
+                                <input type="radio" name="sexo" id="check-macho" value="M">
                                 <label for="check-macho">Macho</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="sexo" id="check-femea">
+                                <input type="radio" name="sexo" id="check-femea" value="F">
                                 <label for="check-femea">Fêmea</label>
                             </div>
                         </div>
@@ -105,22 +105,22 @@
                         <div class="porte-opcoes columns">
                             
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-pequeno">
+                                <input type="radio" name="porte-animal" id="porte-pequeno" value="P">
                                 <label for="porte-pequeno">P</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-medio">
+                                <input type="radio" name="porte-animal" id="porte-medio" value="M">
                                 <label for="porte-medio">M</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-grande">
+                                <input type="radio" name="porte-animal" id="porte-grande" value="G">
                                 <label for="porte-grande">G</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-extra-grande">
+                                <input type="radio" name="porte-animal" id="porte-extra-grande" value="XG">
                                 <label for="porte-extra-grande">XG</label>
                             </div>
 
@@ -131,12 +131,12 @@
                         <h2>Possui doença crônica?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui">
+                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim">
                             <label for="doenca-cronica-possui">Sim</label>
                         </div>
 
                         <div class="opcao">
-                            <input type="radio" name="doenca-cronica" id="doenca-cronica-nao-possui">
+                            <input type="radio" name="doenca-cronica" id="doenca-cronica-nao-possui" value="nao">
                             <label for="doenca-cronica-nao-possui">Não</label>
                         </div>
                     </div>
@@ -145,12 +145,12 @@
                         <h2>Necessita muita atenção?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="atencao" id="atencao-extra">
+                            <input type="radio" name="atencao" id="atencao-extra" value="sim">
                             <label for="convivencia-boa">Sim</label>
                         </div>
 
                         <div class="opcao">
-                            <input type="radio" name="atencao" id="atencao-normal">
+                            <input type="radio" name="atencao" id="atencao-normal" value="nao">
                             <label for="convivencia-ruim">Não</label>
                         </div>
                     </div>
@@ -159,12 +159,12 @@
                         <h2>Convive bem com outros animais?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="convivencia" id="convivencia-boa">
+                            <input type="radio" name="convivencia" id="convivencia-boa" value="sim">
                             <label for="convivencia-boa">Sim</label>
                         </div>
 
                         <div class="opcao">
-                            <input type="radio" name="convivencia" id="convivencia-ruim">
+                            <input type="radio" name="convivencia" id="convivencia-ruim" value="nao">
                             <label for="convivencia-ruim">Não</label>
                         </div>
                     </div>
@@ -175,12 +175,12 @@
                         <div class="preferencias-opcoes columns">
 
                             <div class="opcao">
-                                <input type="radio" name="preferencia" id="preferencia-possui">
+                                <input type="radio" name="necessidade" id="necessidade-possui" value="sim">
                                 <label for="preferencia-possui">Possui</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="preferencia" id="preferencia-nao-possui">
+                                <input type="radio" name="necessidade" id="necessidade-nao-possui" value="nao">
                                 <label for="preferencia-nao-possui">Não possui</label>
                             </div>
                         </div>
@@ -202,6 +202,7 @@
     </main>
 
     
-    <script src="js/script.js"></script>
+    <script src="js/scriptPet.js"></script>
+    <script src="js/PetFront.js"></script>
 </body>
 </html>

@@ -40,3 +40,15 @@ export async function getAnimalById(req, res) {
         res.status(500).json({ message: "Erro ao buscar animal" }); // Erro ao processar a requisição
     }
 }
+
+export async function addUser(req, res) {
+    const userData = req.body; // Obtém os dados do corpo da requisição
+
+    try {
+        await model.addUser(userData);
+        res.status(201).json({ message: "Usuário cadastrado com sucesso!" }); // Retorna status 201 (criado)
+    } catch (err) {
+        console.error("Erro ao cadastrar Usuário:", err);
+        res.status(500).json({ message: "Erro ao cadastrar Usuário." });
+    }
+}
