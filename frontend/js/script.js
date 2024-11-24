@@ -1,8 +1,9 @@
 // URL do backend
 const API_URL = 'http://localhost:3001/api/animais';
 
+
 // Função para buscar e exibir todos os animais
-async function fetchAnimals() {
+/*async function fetchAnimals() {
     try {
         const response = await fetch(API_URL);
         const animals = await response.json();
@@ -20,7 +21,6 @@ async function fetchAnimals() {
                 <p>Idade: ${animal.idade}</p>
                 <p>Porte: ${animal.porte}</p>
                 <p>Sexo: ${animal.sexo}</p>
-                <p>Castrado: ${animal.castrado ? 'Sim' : 'Não'}</p>
                 <p>Número: ${animal.numero}</p>
                 <p>Bairro: ${animal.bairro}</p>
                 <p>Cidade: ${animal.cidade}</p>
@@ -29,8 +29,6 @@ async function fetchAnimals() {
                 <p>Data de Resgate: ${animal.data_resgate}</p>
                 <p>Convivência: ${animal.convivencia ? 'Sim' : 'Não'}</p>
                 <p>Doença Crônica: ${animal.doenca_cronica ? 'Sim' : 'Não'}</p>
-                <p>Doença Transmissível: ${animal.doenca_transmissivel ? 'Sim' : 'Não'}</p>
-                <p>Necessidade de Tratamento: ${animal.necessidade_tratamento ? 'Sim' : 'Não'}</p>
                 <p>Descrição Geral: ${animal.desc_geral}</p>
                 
             `;
@@ -39,18 +37,16 @@ async function fetchAnimals() {
     } catch (err) {
         console.error("Erro ao buscar animais:", err);
     }
-}
+}*/
 
 // Função para adicionar um novo animal
 async function addAnimal(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
-    const especie = document.getElementById('especie').value;
-    const raca = document.getElementById('raca').value;
+    const raca = document.getElementById('raca-animal').value;
     const idade = document.getElementById('idade').value;
-    const porte = document.getElementById('porte').value;
-    const data_resgate = document.getElementById('data-resgate-input');
+    const data_resgate = document.getElementById('data-resgate-input').value;
 
     const cidade = document.getElementById('cidade').value;
     const estado = document.getElementById('estado').value;
@@ -59,12 +55,27 @@ async function addAnimal(event) {
     const complemento = document.getElementById('complemento').value;
 
 
+    const especie = document.getElementById('especie-animal').value;
+
+
+    const portes = document.querySelectorAll('input[name="porte-animal"]');
+
+    let porte = '';
+
+    for(const opcao1 of portes){
+        if(opcao1.checked){
+            porte = opcao1.value;
+            break;
+        }
+    }
+
+
 
 
 
     let sexos = document.querySelectorAll('input[name="sexo"]');
     
-    const sexo = '';
+    let sexo = '';
     
     for(const opcao of sexos){
         if(opcao.checked){
@@ -75,7 +86,7 @@ async function addAnimal(event) {
 
     let doencaBoolean = document.querySelectorAll('input[name="doenca-cronica"]');
     
-    const doenca_cronica = '';
+    let doenca_cronica = '';
     
     for(const opcao of doencaBoolean){
         if(opcao.checked){
@@ -84,20 +95,20 @@ async function addAnimal(event) {
         }
     }
 
-    let necessidadeTempoBoolean = document.querySelectorAll('input[name="atencao"]');
+    let necessidadeAtencaoBoolean = document.querySelectorAll('input[name="atencao"]');
     
-    const necessidadeTempo = '';
+    let necessidade_atencao = '';
     
-    for(const opcao of necessidadeTempoBoolean){
+    for(const opcao of necessidadeAtencaoBoolean){
         if(opcao.checked){
-            necessidadeTempo = opcao.value;
+            necessidade_atencao = opcao.value;
             break;
         }
     }
 
     let convivenciaBoolean = document.querySelectorAll('input[name="convivencia"]');
     
-    const convivencia = '';
+    let convivencia = '';
     
     for(const opcao of convivenciaBoolean){
         if(opcao.checked){
@@ -108,7 +119,7 @@ async function addAnimal(event) {
 
     let necessidadeBoolean = document.querySelectorAll('input[name="convivencia"]');
     
-    const necessidade = '';
+    let necessidade = '';
     
     for(const opcao of necessidadeBoolean){
         if(opcao.checked){
@@ -118,7 +129,7 @@ async function addAnimal(event) {
     }
 
 
-    const newAnimal = { nome, especie, raca, idade, porte, data_resgate, cidade, estado, rua, numero, complemento, sexo, doenca_cronica, necessidadeTempo, convivencia, necessidade };
+    const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade, necessidade_atencao };
 
     try {
         const response = await fetch(API_URL, {
@@ -127,8 +138,7 @@ async function addAnimal(event) {
             body: JSON.stringify(newAnimal)
         });
         if (response.ok) {
-            document.getElementById('animalForm').reset();
-            fetchAnimals(); // Atualiza a lista após adicionar
+            
             alert("Animal cadastrado com sucesso!");
         } else {
             alert("Erro ao cadastrar animal.");
@@ -139,7 +149,6 @@ async function addAnimal(event) {
 }
 
 // Carrega os animais ao abrir a página
-document.addEventListener('DOMContentLoaded', fetchAnimals);
 
 // Adiciona evento para o formulário
-document.getElementById('cadastroAnimal').addEventListener('submit', addAnimal);
+document.getElementById('form-animal').addEventListener('submit', addAnimal);

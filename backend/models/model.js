@@ -15,29 +15,25 @@ export async function getAnimals() {
 // Função para adicionar um novo animal
 export async function addAnimal(animal) {
     const query = `
-        INSERT INTO animais (fk_id_protetor, fk_id_tutor, nome, idade, especie, raca, sexo, porte, castrado, numero, bairro, cidade, estado, cep, data_resgate, convivencia, doenca_cronica, doenca_transmissivel, necessidade_tratamento, desc_geral)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)`;
+        INSERT INTO animais (nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade, necessidade_atencao)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`;
     const params = [
-        animal.fk_id_protetor,
-        animal.fk_id_tutor,
         animal.nome,
         animal.idade,
         animal.especie,
         animal.raca,
         animal.sexo,
         animal.porte,
-        animal.castrado,
         animal.numero,
-        animal.bairro,
+        animal.rua,
         animal.cidade,
         animal.estado,
-        animal.cep,
+        animal.complemento,
         animal.data_resgate,
         animal.convivencia,
         animal.doenca_cronica,
-        animal.doenca_transmissivel,
-        animal.necessidade_tratamento,
-        animal.desc_geral
+        animal.necessidade,
+        animal.necessidade_atencao,
     ];
     try {
         await executeQuery(query, params);
