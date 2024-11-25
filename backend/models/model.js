@@ -102,20 +102,18 @@ export async function getUsers() {
     }
 }
 export async function getUsuarioById(id_usuario) { 
-    const result = await client.query('SELECT * FROM usuarios WHERE id_usuario = $1', [id_usuario]); 
-    return result.rows[0]; 
-}
-
-export async function getCompatibility() {
-    const query = `SELECT * FROM compatibilidade_usuarios_animais`;
+    const query = `SELECT * FROM usuarios WHERE id_usuario = $1`;
+    const params = [id_usuario];
     try {
-        const result = await executeQuery(query);
-        return result.rows; // Retorna todos os animais
+        const result = await executeQuery(query, params);
+        return result.rows[0]; // Retorna o primeiro animal encontrado
     } catch (err) {
-        console.error("Erro ao buscar compatibilidade:", err);
+        console.error("Erro ao buscar usuário por ID:", err);
         throw err;
     }
 }
+
+
 
 export function calcularCompatibilidade(usuario, animal) { 
     let pontos = 0; 

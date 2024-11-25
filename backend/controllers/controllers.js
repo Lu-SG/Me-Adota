@@ -64,27 +64,28 @@ export async function getAllUsers(req, res){
 
 }
 
-export async function getCompatibility(req, res){
-    try {
-        const compatibility = await model.getCompatibility();
-        res.status(200).json(compatibility); // Retorna a lista de usuarios com status 200 (sucesso)
-    } catch (err) {
-        console.error("Erro ao buscar compatibilidade:", err);
-        res.status(500).json({ message: "Erro ao buscar compatibilidade" });
-    }
 
-}
 
 // Controlador para calcular a compatibilidade 
 export async function calcularCompatibilidade(req, res) { 
     const { id_usuario } = req.params;
     try { 
         const usuario = await model.getUsuarioById(id_usuario); 
-        const animal = await model.getAnimals();
-        const resultados = animal.map(animal => { 
+        const animais = await model.getAnimals();
+        const resultados = animais.map(animal => { 
             const compatibilidade = model.calcularCompatibilidade(usuario, animal); 
-            return { ...animal, compatibilidade }; 
-        }); 
+            console.log(`Compatibilidade entre ${usuario.nome} e ${animal.nome}:`, compatibilidade); 
+            return { ...animal, compatibilidade }; });
+        
+        if (!resultados || resultados.length === 0) 
+        { 
+            console.error('Nenhum resultado foi gerado'); 
+            return res.status(500).json({ 
+                error: 'Nenhum resultado foi gerado' 
+            }); 
+        }
+        
+        console.log('Resultados de compatibilidade antes de ordenar:', resultados);
         const animaisCompativeis = resultados.sort((a, b) => b.compatibilidade - a.compatibilidade); 
         res.json(animaisCompativeis); 
     } catch (err) { 
