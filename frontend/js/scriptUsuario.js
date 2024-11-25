@@ -18,10 +18,9 @@ async function addUser(event) {
 
     //Preferências
 
-    const especie_desejada = document.getElementById('especie').value;
+    let especie_desejada = document.getElementById('especie').value;
 
-
-
+    
     let portes = document.querySelectorAll('input[name="porte"]');
 
     let porte_desejado = '';

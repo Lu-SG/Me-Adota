@@ -47,9 +47,18 @@
                 </div>
 
           <h2 class="form-titulo">Preferências</h2>
-          <div class="form-inputs columns wraps">
-            <input class="campo maior" type="text" id="especie" name="especie" class="campo" placeholder="Espécie Desejada">
-          </div>
+          <div class="form-campos wraps form-lista">
+            <label for="especie-desejada">Espécie Desejada:</label>
+            <div class="form-campos wraps form-lista lista">
+                <select class="select-front" id="especie" name="especie" id="especie" required>
+                    <option value="" selected hidden disabled>Selecione</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+        </div>
           
           <div class="columns wraps">
             <div> 
