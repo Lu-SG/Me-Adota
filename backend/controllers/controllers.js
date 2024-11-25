@@ -52,3 +52,46 @@ export async function addUser(req, res) {
         res.status(500).json({ message: "Erro ao cadastrar Usuário." });
     }
 }
+
+export async function getAllUsers(req, res){
+    try {
+        const users = await model.getUsers();
+        res.status(200).json(users); // Retorna a lista de usuarios com status 200 (sucesso)
+    } catch (err) {
+        console.error("Erro ao buscar usuarios:", err);
+        res.status(500).json({ message: "Erro ao buscar usuarios" });
+    }
+
+}
+
+export async function getCompatibility(req, res){
+    try {
+        const compatibility = await model.getCompatibility();
+        res.status(200).json(compatibility); // Retorna a lista de usuarios com status 200 (sucesso)
+    } catch (err) {
+        console.error("Erro ao buscar compatibilidade:", err);
+        res.status(500).json({ message: "Erro ao buscar compatibilidade" });
+    }
+
+}
+
+// Controlador para calcular a compatibilidade 
+export async function calcularCompatibilidade(req, res) { 
+    const { id_usuario } = req.params;
+    try { 
+        const usuario = await model.getUsuarioById(id_usuario); 
+        const animal = await model.getAnimals();
+        const resultados = animal.map(animal => { 
+            const compatibilidade = model.calcularCompatibilidade(usuario, animal); 
+            return { ...animal, compatibilidade }; 
+        }); 
+        const animaisCompativeis = resultados.sort((a, b) => b.compatibilidade - a.compatibilidade); 
+        res.json(animaisCompativeis); 
+    } catch (err) { 
+        console.error('Erro ao calcular compatibilidade:', err); 
+        res.status(500).json({ error: 'Erro ao calcular compatibilidade' });
+    } 
+}
+
+
+

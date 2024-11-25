@@ -90,3 +90,106 @@ export async function findAnimalById(id) {
         throw err;
     }
 }
+
+export async function getUsers() {
+    const query = `SELECT * FROM usuarios`;
+    try {
+        const result = await executeQuery(query);
+        return result.rows; // Retorna todos os animais
+    } catch (err) {
+        console.error("Erro ao buscar usuarios:", err);
+        throw err;
+    }
+}
+export async function getUsuarioById(id_usuario) { 
+    const result = await client.query('SELECT * FROM usuarios WHERE id_usuario = $1', [id_usuario]); 
+    return result.rows[0]; 
+}
+
+export async function getCompatibility() {
+    const query = `SELECT * FROM compatibilidade_usuarios_animais`;
+    try {
+        const result = await executeQuery(query);
+        return result.rows; // Retorna todos os animais
+    } catch (err) {
+        console.error("Erro ao buscar compatibilidade:", err);
+        throw err;
+    }
+}
+
+export function calcularCompatibilidade(usuario, animal) { 
+    let pontos = 0; 
+    if (usuario.especie_desejada === animal.especie) 
+    {
+        pontos += 20; 
+    }
+    else
+    {
+        pontos -= 20;
+    }
+
+
+    if (usuario.porte_desejado === animal.porte)
+    {
+        pontos += 10; 
+    }
+    else
+    {
+        pontos -= 10;
+    }
+
+    if (usuario.sexo_desejado === animal.sexo)
+    {
+        pontos += 5; 
+    }
+    else
+    {
+        pontos -= 5;
+    }
+
+
+    if (usuario.aceita_necessidade_especial === animal.necessidade_especial)
+    {
+        pontos += 10; 
+    }
+    else
+    {
+        if(usuario.aceita_necessidade_especial === 'sim' && animal.necessidade_especial ==='nao')
+        {
+            pontos += 10;
+        }
+        
+    }
+
+
+    if (usuario.aceita_doenca_cronica === 'sim' && animal.doenca_cronica === 'sim')
+    {
+        pontos += 10; 
+    }
+    
+    if(usuario.aceita_doenca_cronica === 'nao' && animal.doenca_cronica === 'nao')
+    {
+        pontos += 5;
+    }
+    
+    if(usuario.ja_tem_outros_animais === animal.convivencia)
+    {
+        pontos += 5;
+    }
+
+    if(usuario.ja_tem_outros_animais === 'sim' && animal.convivencia === 'nao')
+    {
+        pontos = -100;
+    }
+
+    if(usuario.tem_tempo_pro_animal === 'sim' && animal.necessidade_atencao === 'sim')
+    {
+        pontos += 5;
+    }
+
+    if(usuario.tem_tempo_pro_animal === 'nao' && animal.necessidade_atencao === 'sim')
+    {
+        pontos = -100;
+    }
+    return pontos;
+}
