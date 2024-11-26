@@ -1,13 +1,13 @@
 
-const API_URL_USUARIO = 'http://localhost:3001/api/usuarios/:email';
+const API_URL_USUARIO = 'http://localhost:3001/api/usuarios/checkEmail';
 
 
 async function checkEmail(event) {
     event.preventDefault();
 
 
-    let senha = document.getElementById('senha');
-    let email = document.getElementById('email');
+    let senha = document.getElementById('senha').value;
+    let email = document.getElementById('email').value;
 
     const valores = {email, senha};
 

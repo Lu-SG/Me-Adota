@@ -9,6 +9,7 @@ const pool = new Pool({
     database: "postgres",
 });
 
+
 export async function executeQuery(query, params) {
     const client = await pool.connect();
     try {

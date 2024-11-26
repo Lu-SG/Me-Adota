@@ -193,14 +193,18 @@ export function calcularCompatibilidade(usuario, animal) {
 }
 
 
-export async function checkEmail(email) { 
+// Função para encontrar um usuário pelo email
+export async function findUserByEmail(email) {
+  try {
     const query = `SELECT * FROM usuarios WHERE email = $1`;
     const params = [email];
-    try {
-        const result = await executeQuery(query, params);
-        return result.rows[0]; 
-    } catch (err) {
-        console.error("Erro ao buscar usuário por ID:", err);
-        throw err;
-    }
-}
+
+    // Realiza uma consulta SQL na tabela 'usuarios'
+    const result = await executeQuery(query, params);
+    return result.rows[0];
+  } catch (error) {
+    console.error('Erro ao encontrar usuário por email:', error);
+    throw error;
+  }
+};
+

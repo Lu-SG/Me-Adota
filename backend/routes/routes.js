@@ -10,7 +10,7 @@ router.get('/animais/:id_animal', getAnimalById);  // Rota para buscar um animal
 router.post('/usuarios', addUser);
 router.get('/usuarios', getAllUsers);
 
-router.post('/usuarios/:email', checkEmail)
+router.post('/usuarios/checkEmail', checkEmail);
 
 
 router.get('/usuarios/:id_usuario', calcularCompatibilidade);
