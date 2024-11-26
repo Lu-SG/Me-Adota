@@ -20,25 +20,27 @@
     </header>
     
     <main>
-        <form class="columns wraps">
+        <form class="columns wraps" id="login-form">
             <h1 class="form-titulo">Login</h1>
             
             <div class="form-inputs columns wraps">
 
                 <div class="form-campos wraps">
-                    <input class="campo maior" type="text" placeholder="Email">
-                    <input class="campo maior" type="password" placeholder="Senha" name="" id="">
+                    <input class="campo maior" type="text" placeholder="Email" id="email">
+                    <input class="campo maior" type="password" placeholder="Senha" id="senha">
                 </div>
 
                 <div class="form-botoes wraps">
                     <a href="index.html" class="botao">Voltar</a>
-                    <input class="botao" type="button" value="Logar">
+                    <button id="login" class="botao" type="submit">Logar</button>
                 </div>
                 
             </div>
             <p>Não possui uma conta? <a class="link" href="cadastroUsuario.html">Cadastrar</a></p>
         </form>
     </main>
+
+<script src="js/scriptLogin.js"></script>
 
 </body>
 </html>

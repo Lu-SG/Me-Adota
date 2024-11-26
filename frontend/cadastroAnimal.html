@@ -59,7 +59,7 @@
                 <div class="form-campos wraps" id="container-data-resgate">
                     <label for="data-resgate" id="resgate-texto">Data do Resgate:</label>
                     <div class="form-campos wraps" id="data-resgate">
-                        <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input">
+                        <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input" required>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                         <input class="campo" id="estado" type="text" placeholder="Estado"required>
                         <input class="campo maior" id="rua" type="text" placeholder="rua"required>
                         <input class="campo" id="numero" type="text" placeholder="Número"required>
-                        <input class="campo" id="complemento" type="text" placeholder="Complemento"required>
+                        <input class="campo" id="complemento" type="text" placeholder="Complemento">
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
 
                         <div class="genero-opcoes columns">
                             <div class="opcao">
-                                <input type="radio" name="sexo" id="check-macho" value="M">
+                                <input type="radio" name="sexo" id="check-macho" value="M" required>
                                 <label for="check-macho">Macho</label>
                             </div>
 
@@ -105,7 +105,7 @@
                         <div class="porte-opcoes columns">
                             
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-pequeno" value="P">
+                                <input type="radio" name="porte-animal" id="porte-pequeno" value="P" required>
                                 <label for="porte-pequeno">P</label>
                             </div>
 
@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="porte-animal" id="porte-extra-grande" value="XG">
+                                <input type="radio" name="porte-animal" id="porte-extra-grande" value="XG" >
                                 <label for="porte-extra-grande">XG</label>
                             </div>
 
@@ -131,7 +131,7 @@
                         <h2>Possui doença crônica?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim">
+                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim" required>
                             <label for="doenca-cronica-possui">Sim</label>
                         </div>
 
@@ -145,7 +145,7 @@
                         <h2>Necessita muita atenção?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="atencao" id="atencao-extra" value="sim">
+                            <input type="radio" name="atencao" id="atencao-extra" value="sim" required>
                             <label for="convivencia-boa">Sim</label>
                         </div>
 
@@ -159,7 +159,7 @@
                         <h2>Convive bem com outros animais?</h2>
                         
                         <div class="opcao">
-                            <input type="radio" name="convivencia" id="convivencia-boa" value="sim">
+                            <input type="radio" name="convivencia" id="convivencia-boa" value="sim"required>
                             <label for="convivencia-boa">Sim</label>
                         </div>
 
@@ -175,7 +175,7 @@
                         <div class="preferencias-opcoes columns">
 
                             <div class="opcao">
-                                <input type="radio" name="necessidade" id="necessidade-possui" value="sim">
+                                <input type="radio" name="necessidade" id="necessidade-possui" value="sim" required>
                                 <label for="preferencia-possui">Possui</label>
                             </div>
 

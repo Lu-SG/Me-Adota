@@ -191,3 +191,16 @@ export function calcularCompatibilidade(usuario, animal) {
     }
     return pontos;
 }
+
+
+export async function checkEmail(email) { 
+    const query = `SELECT * FROM usuarios WHERE email = $1`;
+    const params = [email];
+    try {
+        const result = await executeQuery(query, params);
+        return result.rows[0]; 
+    } catch (err) {
+        console.error("Erro ao buscar usuário por ID:", err);
+        throw err;
+    }
+}

@@ -94,5 +94,15 @@ export async function calcularCompatibilidade(req, res) {
     } 
 }
 
+export async function checkEmail(email) {
+    const userData = email; // Obtém os dados do corpo da requisição
 
+    try {
+        await model.checkEmail(userData);
+        res.status(201).json({ message: "usuário logado com sucesso!" }); // Retorna status 201 (criado)
+    } catch (err) {
+        console.error("Erro ao logar:", err);
+        res.status(500).json({ message: "Erro ao logar usuário" });
+    }
+}
 
