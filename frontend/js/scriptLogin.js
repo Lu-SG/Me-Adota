@@ -55,8 +55,6 @@ async function checkEmail(event) {
 
 
 
-
-
     try {
         const response = await fetch(API_URL_USUARIO, {
             method: 'POST',
@@ -64,9 +62,14 @@ async function checkEmail(event) {
             body: JSON.stringify(valores)
         });
         if (response.ok) {
-            alert("Usuário logado com sucesso!");
+            alert("Login efetuado com sucesso!");
+            localStorage.setItem('emailUsuario', email);
+
+
+            window.location.href = 'buscarAnimal.html';
+
         } else {
-            alert("Erro ao logar Usuário.");
+            alert("Email e/ou senha incorretos");
         }
     } catch (err) {
         console.error("Erro ao logar Usuário:", err);

@@ -1,11 +1,9 @@
 
 async function buscarDados()
 {
-    
-    const id_usuario_txt = document.getElementById('id_usuario'); 
-    const id_usuario = Number(id_usuario_txt.value); 
+    const emailUsuario = localStorage.getItem('emailUsuario');
     try { 
-        const response = await fetch(`http://localhost:3001/api/usuarios/${id_usuario}`, { 
+        const response = await fetch(`http://localhost:3001/api/usuarios/${emailUsuario}`, { 
             method: 'GET', // Ajustado para GET 
             headers: { 'Content-Type': 'application/json' } 
         }); 

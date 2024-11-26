@@ -13,7 +13,7 @@ router.get('/usuarios', getAllUsers);
 router.post('/usuarios/checkEmail', checkEmail);
 
 
-router.get('/usuarios/:id_usuario', calcularCompatibilidade);
+router.get('/usuarios/:email', calcularCompatibilidade);
 
 
 export default router;

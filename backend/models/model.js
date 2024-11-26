@@ -101,14 +101,14 @@ export async function getUsers() {
         throw err;
     }
 }
-export async function getUsuarioById(id_usuario) { 
-    const query = `SELECT * FROM usuarios WHERE id_usuario = $1`;
-    const params = [id_usuario];
+export async function getUsuarioByEmail(email) { 
+    const query = `SELECT * FROM usuarios WHERE email = $1`;
+    const params = [email];
     try {
         const result = await executeQuery(query, params);
         return result.rows[0]; // Retorna o primeiro animal encontrado
     } catch (err) {
-        console.error("Erro ao buscar usuário por ID:", err);
+        console.error("Erro ao buscar usuário por email:", err);
         throw err;
     }
 }
@@ -194,29 +194,19 @@ export function calcularCompatibilidade(usuario, animal) {
 
 
 // Função para encontrar um usuário pelo email
-export async function findUserByEmail(email) {
+export async function findUserByEmail(email, senha) {
   try {
-    const query = `SELECT * FROM usuarios WHERE email = $1`;
-    const params = [email];
+    const query = `SELECT * FROM usuarios WHERE email = $1 AND senha = $2`;
+    const params = [email, senha];
 
     // Realiza uma consulta SQL na tabela 'usuarios'
     const result = await executeQuery(query, params);
     return result.rows[0];
   } catch (error) {
-    console.error('Erro ao encontrar usuário por email:', error);
+    console.error('Erro ao encontrar usuário por email e senha:', error);
     throw error;
   }
 };
 
-export async function getSenhaByEmail(email) { 
-    const query = `SELECT senha FROM usuarios WHERE email = $1`;
-    const params = [email];
-    try {
-        const result = await executeQuery(query, params);
-        return result.rows[0]; 
-        } catch (err) {
-        console.error("Erro ao buscar senha pelo email:", err);
-        throw err;
-    }
-}
+
 

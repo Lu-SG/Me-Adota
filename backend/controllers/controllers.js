@@ -68,9 +68,9 @@ export async function getAllUsers(req, res){
 
 // Controlador para calcular a compatibilidade 
 export async function calcularCompatibilidade(req, res) { 
-    const { id_usuario } = req.params;
+    const { email } = req.params;
     try { 
-        const usuario = await model.getUsuarioById(id_usuario); 
+        const usuario = await model.getUsuarioByEmail(email); 
         const animais = await model.getAnimals();
         const resultados = animais.map(animal => { 
             const compatibilidade = model.calcularCompatibilidade(usuario, animal); 
@@ -115,10 +115,10 @@ const strToArrayBuffer = (str) => {
 
 // Função controladora para buscar um usuário pelo email
 export const checkEmail = async (req, res) => {
-    const { email } = req.body;
+    const { email, senha } = req.body;
 
     try {
-      const user = await model.findUserByEmail(email);
+      const user = await model.findUserByEmail(email, senha);
   
       if (user) { 
           res.send('Email encontrado.'); 
