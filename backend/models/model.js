@@ -208,3 +208,15 @@ export async function findUserByEmail(email) {
   }
 };
 
+export async function getSenhaByEmail(email) { 
+    const query = `SELECT senha FROM usuarios WHERE email = $1`;
+    const params = [email];
+    try {
+        const result = await executeQuery(query, params);
+        return result.rows[0]; 
+        } catch (err) {
+        console.error("Erro ao buscar senha pelo email:", err);
+        throw err;
+    }
+}
+

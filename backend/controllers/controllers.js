@@ -93,24 +93,41 @@ export async function calcularCompatibilidade(req, res) {
         res.status(500).json({ error: 'Erro ao calcular compatibilidade' });
     } 
 }
+const strToArrayBuffer = (str) => { 
+    const encoder = new TextEncoder(); 
+    return encoder.encode(str); 
+};
+
+// Função para converter um ArrayBuffer em uma string hexadecimal
+
+
+
+
+
+
+
+// Função para comparar senhas usando SubtleCrypto
+
+
+
 
 
 
 // Função controladora para buscar um usuário pelo email
 export const checkEmail = async (req, res) => {
-  const { email } = req.body;
+    const { email } = req.body;
 
-  try {
-    const user = await model.findUserByEmail(email);
-
-    if (user) { 
-        res.send('Email encontrado.'); 
-    } 
-    else { 
-        res.status(404).send('Email não encontrado.'); 
-    } } catch (error) 
-    { 
-        res.status(500).send('Erro ao acessar o banco de dados.'); 
-    } 
-};
+    try {
+      const user = await model.findUserByEmail(email);
+  
+      if (user) { 
+          res.send('Email encontrado.'); 
+      } 
+      else { 
+          res.status(404).send('Email não encontrado.'); 
+      } } catch (error) 
+      { 
+          res.status(500).send('Erro ao acessar o banco de dados.'); 
+      } 
+    };
 
