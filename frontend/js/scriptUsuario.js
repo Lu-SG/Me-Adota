@@ -130,9 +130,14 @@ async function addUser(event) {
             body: JSON.stringify(newUser)
         });
         if (response.ok) {
-            alert("Usuário cadastrado com sucesso!");
+            alert("Cadastro realizado com sucesso!");
+
+            localStorage.setItem('emailUsuario', email);
+
+
+            window.location.href = 'buscarAnimal.html';
         } else {
-            alert("Erro ao cadastrar Usuário.");
+            alert("Erro ao Realizar o cadastro.");
         }
     } catch (err) {
         console.error("Erro ao adicionar Usuário:", err);
