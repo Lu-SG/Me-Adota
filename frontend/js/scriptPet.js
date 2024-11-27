@@ -2,42 +2,7 @@
 const API_URL = 'http://localhost:3001/api/animais';
 
 
-// Função para buscar e exibir todos os animais
-/*async function fetchAnimals() {
-    try {
-        const response = await fetch(API_URL);
-        const animals = await response.json();
-        
-        const animalList = document.getElementById('animalList');
-        animalList.innerHTML = '';
 
-        animals.forEach(animal => {
-            const animalCard = document.createElement('div');
-            animalCard.classList.add('animal-card');
-            animalCard.innerHTML = `
-                <h3>${animal.nome}</h3>
-                <p>Espécie: ${animal.especie}</p>
-                <p>Raça: ${animal.raca}</p>
-                <p>Idade: ${animal.idade}</p>
-                <p>Porte: ${animal.porte}</p>
-                <p>Sexo: ${animal.sexo}</p>
-                <p>Número: ${animal.numero}</p>
-                <p>Bairro: ${animal.bairro}</p>
-                <p>Cidade: ${animal.cidade}</p>
-                <p>Estado: ${animal.estado}</p>
-                <p>CEP: ${animal.cep}</p>
-                <p>Data de Resgate: ${animal.data_resgate}</p>
-                <p>Convivência: ${animal.convivencia ? 'Sim' : 'Não'}</p>
-                <p>Doença Crônica: ${animal.doenca_cronica ? 'Sim' : 'Não'}</p>
-                <p>Descrição Geral: ${animal.desc_geral}</p>
-                
-            `;
-            animalList.appendChild(animalCard);
-        });
-    } catch (err) {
-        console.error("Erro ao buscar animais:", err);
-    }
-}*/
 
 // Função para adicionar um novo animal
 async function addAnimal(event) {
@@ -130,27 +95,52 @@ async function addAnimal(event) {
 
     raca = String(raca).charAt(0).toUpperCase() + String(raca).slice(1).toLowerCase();
 
+    function validarNumero()
+    {
+        if (!isNaN(numero) && numero !== '') 
+            { 
+                return true; 
+            } 
+            else 
+            { 
+                alert('Número inválido. Por favor, insira um número.'); 
+                 return false; 
+            }
+    }
+
+
     
 
 
+    async function validarDadosAnimal(event) {
+    
+        if(validarNumero() == true)
+        {
+            const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao };
 
-    const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao };
-
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newAnimal)
-        });
-        if (response.ok) {
-            
-            alert("Animal cadastrado com sucesso!");
-        } else {
-            alert("Erro ao cadastrar animal.");
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newAnimal)
+                });
+                if (response.ok) {
+                    
+                    alert("Animal cadastrado com sucesso!");
+                } else {
+                    alert("Erro ao cadastrar animal.");
+                }
+            } catch (err) {
+                console.error("Erro ao adicionar animal:", err);
+            }
         }
-    } catch (err) {
-        console.error("Erro ao adicionar animal:", err);
+        else{
+            event.preventDefault();
+        }
+        
     }
+
+    validarDadosAnimal(event);
 }
 
 

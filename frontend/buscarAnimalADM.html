@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar pets compatíveis</title>
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <style> 
+
+    #resultado { 
+        display: flex; 
+        flex-direction: column; /* Alinha os filhos na vertical */ 
+        gap: 20px; /* Espaçamento entre os blocos */ 
+    }
+    
+    .animal { 
+        display: block;
+        margin-bottom: 20px; /* Espaçamento entre os blocos */ 
+        padding: 10px; 
+        border: 1px solid #ddd; /* Borda para visualização */ 
+        border-radius: 5px; 
+        background-color: #f9f9f9; /* Fundo para destaque */ 
+        clear: both; /* Garante que cada bloco comece em uma nova linha */ 
+    } 
+    .animal h2, .animal p { 
+        display: block; 
+        margin: 5px 0; /* Espaçamento entre elementos */
+        width: 100%; /* Garante que cada elemento ocupe a largura total do bloco */ 
+    }
+    .centered-title { 
+        text-align: center; 
+        margin-top: 200px; 
+        font-size: 50px;
+     }
+    </style>
+</head>
+<body>
+    <h1 class="centered-title">Tela de Administrador</h1>
+
+    <main>
+        <button class="botao" id="buscarAnimal" style="padding: 20px;">Encontrar pets</button>
+        <a href="cadastroAnimal.html"><input type="button" value="Cadastrar Animal" class="botao"></a>
+        <div id="resultado"></div>
+    </main>
+
+
+    <script src="js/buscarAnimal.js"></script>
+</body>
+</html>

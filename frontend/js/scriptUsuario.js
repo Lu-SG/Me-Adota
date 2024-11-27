@@ -151,9 +151,17 @@ async function addUser(event) {
             }
     }
 
-    function validarEstado()
+    function validarNumero()
     {
-
+        if (!isNaN(numero) && numero !== '') 
+            { 
+                return true; 
+            } 
+            else 
+            { 
+                alert('Número inválido. Por favor, insira um número.'); 
+                 return false; 
+            }
     }
 
 
@@ -163,7 +171,7 @@ async function addUser(event) {
 
     async function validarDados(event) { 
         
-        if(validarEmail() == true && validarSenha() == true && validarTelefone() == true)
+        if(validarEmail() == true && validarSenha() == true && validarTelefone() == true && validarNumero() == true)
         {
             senha = await storeHashedPassword(senha); 
             const newUser = { nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal };
