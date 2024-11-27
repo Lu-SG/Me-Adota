@@ -5,7 +5,6 @@ async function addUser(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
     const estado = document.getElementById('estado').value;
     const cidade = document.getElementById('cidade').value;
@@ -111,41 +110,97 @@ async function addUser(event) {
         return storedPassword; 
     };
 
+    function validarEmail()
+    {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  
-     
-    senha = await storeHashedPassword(senha); 
-    
-      
-
-
-
-
-    const newUser = { nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal };
-
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newUser)
-        });
-        if (response.ok) {
-            alert("Cadastro realizado com sucesso!");
-
-            localStorage.setItem('emailUsuario', email);
-
-
-            window.location.href = 'buscarAnimal.html';
-        } else {
-            alert("Erro ao Realizar o cadastro.");
-        }
-    } catch (err) {
-        console.error("Erro ao adicionar Usuário:", err);
+        if (emailRegex.test(email)) { 
+                
+                return true; 
+            } else { 
+                alert('Email inválido'); 
+                return false; 
+            } 
     }
+  
+    function validarSenha()
+        {
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/; 
+            if (passwordRegex.test(senha)) 
+                { 
+                    return true; 
+                } 
+                else 
+                { 
+                    alert('Senha inválida. A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.'); 
+                    event.preventDefault(); // Impede o envio do formulário return false; }
+        }
+    }
+
+    function validarTelefone()
+    {
+        const phoneRegex = /^\(\d{2}\)\d{5}-\d{4}$/; 
+        if (phoneRegex.test(telefone)) 
+            { 
+                return true; 
+            } 
+            else 
+            { 
+                alert('Número de telefone inválido. O formato correto é (00)00000-0000.');
+                return false; 
+            }
+    }
+
+    function validarEstado()
+    {
+
+    }
+
+
+
+    const email = document.getElementById('email').value;
+    
+
+    async function validarDados(event) { 
+        
+        if(validarEmail() == true && validarSenha() == true && validarTelefone() == true)
+        {
+            senha = await storeHashedPassword(senha); 
+            const newUser = { nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal };
+
+            try {
+                const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newUser)
+            });
+            if (response.ok) {
+                alert("Cadastro realizado com sucesso!");
+            
+                localStorage.setItem('emailUsuario', email);
+            
+            
+                window.location.href = 'buscarAnimal.html';
+            } else {
+                alert("Erro ao Realizar o cadastro.");
+            }
+            } catch (err) {
+            console.error("Erro ao adicionar Usuário:", err);
+            }
+        }
+        else
+        {
+            event.preventDefault();
+        }
+
+    }
+
+    validarDados(event);
+
 }
 
 
-    
+
   
     
 
