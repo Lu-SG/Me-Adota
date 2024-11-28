@@ -103,12 +103,15 @@ async function addUser(event) {
         return hashHex;
       };
 
+
+
       const storeHashedPassword = async (password) => { 
         const hashedPassword = await hashPassword(password); 
         // Armazenando a senha com hash em uma variável 
         const storedPassword = hashedPassword; 
         return storedPassword; 
     };
+
 
     function validarEmail()
     {

@@ -113,10 +113,19 @@ export async function getUsuarioByEmail(email) {
     }
 }
 
-
-
 export function calcularCompatibilidade(usuario, animal) { 
-    let pontos = 0; 
+    let pontos = 0;
+
+    if(usuario.tem_tempo_pro_animal === 'nao' && animal.necessidade_atencao === 'sim')
+    {
+        return -1000;
+    }
+
+    if(usuario.ja_tem_outros_animais === 'sim' && animal.convivencia === 'nao')
+    {
+        return -1000;
+    }
+
     if (usuario.especie_desejada === animal.especie) 
     {
         pontos += 20; 
@@ -159,7 +168,6 @@ export function calcularCompatibilidade(usuario, animal) {
         
     }
 
-
     if (usuario.aceita_doenca_cronica === 'sim' && animal.doenca_cronica === 'sim')
     {
         pontos += 10; 
@@ -175,20 +183,11 @@ export function calcularCompatibilidade(usuario, animal) {
         pontos += 5;
     }
 
-    if(usuario.ja_tem_outros_animais === 'sim' && animal.convivencia === 'nao')
-    {
-        pontos = -100;
-    }
-
     if(usuario.tem_tempo_pro_animal === 'sim' && animal.necessidade_atencao === 'sim')
     {
         pontos += 5;
     }
 
-    if(usuario.tem_tempo_pro_animal === 'nao' && animal.necessidade_atencao === 'sim')
-    {
-        pontos = -100;
-    }
     return pontos;
 }
 
