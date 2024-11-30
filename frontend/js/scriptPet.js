@@ -1,3 +1,4 @@
+
 // URL do backend
 const API_URL = 'http://localhost:3001/api/animais';
 
@@ -92,11 +93,19 @@ async function addAnimal(event) {
     }
 
     raca = String(raca).charAt(0).toUpperCase() + String(raca).slice(1).toLowerCase();
-
     
+    const textAreaDescricao = document.getElementById('descricao');
+    
+    
+    const desc_necessidade = textAreaDescricao.value;
+    
+    
+
     const fileInput = document.getElementById('inserir-imagem'); 
     const file = fileInput.files[0]; 
     const reader = new FileReader();
+
+
 
 
 
@@ -142,7 +151,8 @@ async function addAnimal(event) {
                     necessidade_especial, 
                     necessidade_atencao,
                     foto: base64Image, // Inclui a imagem codificada em Base64 
-                    mime_type: file.type
+                    mime_type: file.type,
+                    desc_necessidade
                 };
                 
             try {
