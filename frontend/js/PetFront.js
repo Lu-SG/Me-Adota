@@ -42,20 +42,30 @@ listaSelects.forEach(select => {
 // mostrar/esconder a descrição
 
 function mostraDescricao(){
-    const possuiNecessidade = document.getElementById('preferencia-possui');
-    const naoPossuiNecessidade = document.getElementById('preferencia-nao-possui');
+    const necessidadeSim = document.getElementById('necessidade-possui');
+    const necessidadeNao = document.getElementById('necessidade-nao-possui')
+    
+    const doencaSim = document.getElementById('doenca-cronica-possui');
+    const doencaNao = document.getElementById('doenca-cronica-nao-possui');
+
+    
+    
+    
     const descricaoDiv = document.getElementById('descricao-necessidade');
 
+
     function toggleDescricao() {
-        if (possuiNecessidade.checked) {
+        if (necessidadeSim.checked || doencaSim.checked) {
             descricaoDiv.style.display = 'flex';
         } else {
             descricaoDiv.style.display = 'none';
         }
     }
 
-    possuiNecessidade.addEventListener('change', toggleDescricao);
-    naoPossuiNecessidade.addEventListener('change', toggleDescricao);
+    necessidadeSim.addEventListener('change', toggleDescricao);
+    doencaSim.addEventListener('change', toggleDescricao);
+    doencaNao.addEventListener('change', toggleDescricao);
+    necessidadeNao.addEventListener('change', toggleDescricao);
 
     toggleDescricao();
 }
