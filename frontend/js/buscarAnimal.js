@@ -27,7 +27,7 @@ async function buscarDados()
                             <p>Raça: ${animal.raca}</p>
                             <p>Sexo: ${animal.sexo}</p> 
                             <p>Porte: ${animal.porte}</p> 
-                            <p>Localização: ${animal.rua}, ${animal.numero}, ${animal.complemento}, ${animal.cidade} - ${animal.estado}</p> 
+                            <p>Localização: ${animal.bairro}, ${animal.rua}, ${animal.numero}, ${animal.complemento}, ${animal.cidade} - ${animal.estado}</p> 
                             <p>Data do Resgate: ${animal.data_resgate}</p>
                             <p>Convive bem com outro animais: ${animal.convivencia}</p>
                             <p>Possui Doença Crônica: ${animal.doenca_cronica}</p>
@@ -47,7 +47,7 @@ async function buscarDados()
                             <p>Raça: ${animal.raca}</p>
                             <p>Sexo: ${animal.sexo}</p> 
                             <p>Porte: ${animal.porte}</p> 
-                            <p>Localização: ${animal.rua}, ${animal.numero}, ${animal.complemento}, ${animal.cidade} - ${animal.estado}</p> 
+                            <p>Localização: ${animal.bairro}, ${animal.rua}, ${animal.numero}, ${animal.complemento}, ${animal.cidade} - ${animal.estado}</p> 
                             <p>Data do Resgate: ${animal.data_resgate}</p>
                             <p>Convive bem com outro animais: ${animal.convivencia}</p>
                             <p>Possui Doença Crônica: ${animal.doenca_cronica}</p>

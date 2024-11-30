@@ -16,6 +16,7 @@ async function addAnimal(event) {
     const estado = document.getElementById('estado').value;
     const rua = document.getElementById('rua').value;
     const numero = document.getElementById('numero').value;
+    const bairro = document.getElementById('bairro').value;
     const complemento = document.getElementById('complemento').value;
 
 
@@ -152,7 +153,8 @@ async function addAnimal(event) {
                     necessidade_atencao,
                     foto: base64Image, // Inclui a imagem codificada em Base64 
                     mime_type: file.type,
-                    desc_necessidade
+                    desc_necessidade,
+                    bairro
                 };
                 
             try {
