@@ -19,6 +19,7 @@ async function buscarDados()
                         animalDiv.classList.add('animal'); // Adiciona a classe CSS
                         animalDiv.innerHTML = ` 
                         <h2>${animal.nome}</h2> 
+                        <p> <img src="data:${animal.mime_type};base64,${animal.foto}" alt="Animal Image" /></p>
                         <p>Idade: ${animal.idade}</p> 
                         <p>Espécie: ${animal.especie}</p> 
                         <p>Raça: ${animal.raca}</p>

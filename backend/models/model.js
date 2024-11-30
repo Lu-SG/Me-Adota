@@ -14,9 +14,12 @@ export async function getAnimals() {
 
 // Função para adicionar um novo animal
 export async function addAnimal(animal) {
+    const foto = Buffer.from(animal.foto, 'base64');
+    
+    
     const query = `
-        INSERT INTO animais (nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`;
+        INSERT INTO animais (nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao, foto, mime_type)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)`;
     const params = [
         animal.nome,
         animal.idade,
@@ -34,7 +37,8 @@ export async function addAnimal(animal) {
         animal.doenca_cronica,
         animal.necessidade_especial,
         animal.necessidade_atencao,
-        
+        foto,
+        animal.mime_type
     ];
     try {
         await executeQuery(query, params);
@@ -115,6 +119,13 @@ export async function getUsuarioByEmail(email) {
 
 export function calcularCompatibilidade(usuario, animal) { 
     let pontos = 0;
+
+    if(animal.foto)
+    {
+        animal.foto = animal.foto.toString('base64');
+    }
+
+
 
     if(usuario.tem_tempo_pro_animal === 'nao' && animal.necessidade_atencao === 'sim')
     {

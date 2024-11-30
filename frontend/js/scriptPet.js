@@ -2,8 +2,6 @@
 const API_URL = 'http://localhost:3001/api/animais';
 
 
-
-
 // Função para adicionar um novo animal
 async function addAnimal(event) {
     event.preventDefault();
@@ -95,6 +93,13 @@ async function addAnimal(event) {
 
     raca = String(raca).charAt(0).toUpperCase() + String(raca).slice(1).toLowerCase();
 
+    
+    const fileInput = document.getElementById('inserir-imagem'); 
+    const file = fileInput.files[0]; 
+    const reader = new FileReader();
+
+
+
     function validarNumero()
     {
         if (!isNaN(numero) && numero !== '') 
@@ -116,8 +121,30 @@ async function addAnimal(event) {
     
         if(validarNumero() == true)
         {
-            const newAnimal = { nome, idade, especie, raca, sexo, porte, numero, rua, cidade, estado, complemento, data_resgate, convivencia, doenca_cronica, necessidade_especial, necessidade_atencao };
-
+            reader.onloadend = async () => { 
+                const base64Image = reader.result.split(',')[1]; 
+                // Remove a parte 'data:image/jpeg;base64,' 
+                const newAnimal = { 
+                    nome, 
+                    idade, 
+                    especie, 
+                    raca, 
+                    sexo, 
+                    porte, 
+                    numero, 
+                    rua, 
+                    cidade, 
+                    estado, 
+                    complemento, 
+                    data_resgate, 
+                    convivencia, 
+                    doenca_cronica, 
+                    necessidade_especial, 
+                    necessidade_atencao,
+                    foto: base64Image, // Inclui a imagem codificada em Base64 
+                    mime_type: file.type
+                };
+                
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -133,14 +160,21 @@ async function addAnimal(event) {
             } catch (err) {
                 console.error("Erro ao adicionar animal:", err);
             }
+        
         }
+        if(file) {
+            reader.readAsDataURL(file);
+        }else{
+            alert("Por favor, selecione uma imagem.");
+        }
+    }
         else{
             event.preventDefault();
         }
         
-    }
+}
 
-    validarDadosAnimal(event);
+validarDadosAnimal(event);
 }
 
 

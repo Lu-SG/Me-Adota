@@ -73,6 +73,7 @@ export async function calcularCompatibilidade(req, res) {
         const usuario = await model.getUsuarioByEmail(email); 
         const animais = await model.getAnimals();
         const resultados = animais.map(animal => { 
+            
             const compatibilidade = model.calcularCompatibilidade(usuario, animal); 
             console.log(`Compatibilidade entre ${usuario.nome} e ${animal.nome}:`, compatibilidade); 
             return { ...animal, compatibilidade }; });

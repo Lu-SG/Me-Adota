@@ -72,17 +72,18 @@ export async function CadastroAnimal(
     doenca_cronica,
     necessidade_especial,
     necessidade_atencao,
+    foto,
 ) {
     const query = `
         INSERT INTO animais (nome, idade, especie, raca, sexo, porte, 
         numero, rua, cidade, estado, complemento, data_resgate, convivencia, 
-        doenca_cronica, necessidade_especial, necessidade_atencao)
+        doenca_cronica, necessidade_especial, necessidade_atencao, foto)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 
-        $10, $11, $12, $13, $14, $15, $16)`;
+        $10, $11, $12, $13, $14, $15, $16, $17)`;
     const params = [
         nome, idade, especie, raca, sexo, porte,
         numero, rua, cidade, estado, complemento, data_resgate, convivencia,
-        doenca_cronica, necessidade_especial, necessidade_atencao
+        doenca_cronica, necessidade_especial, necessidade_atencao, foto
     ];
     try {
         await executeQuery(query, params);
