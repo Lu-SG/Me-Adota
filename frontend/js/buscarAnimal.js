@@ -3,7 +3,7 @@ async function buscarDados()
 {
     const emailUsuario = localStorage.getItem('emailUsuario');
     try { 
-        const response = await fetch(`http://localhost:3001/api/usuarios/${emailUsuario}`, { 
+        const response = await fetch(`http://localhost:3001/api/usuarios/animais/${emailUsuario}`, { 
             method: 'GET', // Ajustado para GET 
             headers: { 'Content-Type': 'application/json' } 
         }); 
@@ -76,4 +76,5 @@ async function buscarDados()
 }
 
 
+  
 document.getElementById("buscarAnimal").addEventListener("click", buscarDados);

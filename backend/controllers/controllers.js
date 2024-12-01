@@ -143,8 +143,8 @@ export const checkEmail = async (req, res) => {
       
           if (user) { 
             
-              res.send('Email encontrado.'); 
-          } 
+            res.send('Usuário encontrado.'); 
+        } 
           else { 
               res.status(404).send('Email não encontrado.'); 
           } } catch (error) 

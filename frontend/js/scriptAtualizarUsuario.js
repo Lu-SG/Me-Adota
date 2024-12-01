@@ -1,17 +1,20 @@
+const API_URL = `http://localhost:3001/api/usuarios/getUserByEmail`;
 
-
-try { 
-    const emailUsuario = localStorage.getItem('emailUsuario');
-    const response = await fetch(`http://localhost:3001/api/usuarios/${emailUsuario}`, { 
-        method: 'GET', // Ajustado para GET 
-        headers: { 'Content-Type': 'application/json' } 
-    }); 
-    if (response.ok) 
+async function setarDados() {
+    const teste = 'a';
+    const Email = localStorage.getItem('emailUsuario');
+    const valores = {Email, teste};
+    try { 
+        const response = await fetch(API_URL, { 
+            method: 'POST', // Ajustado para GET 
+            headers: { 'Content-Type': 'application/json' } ,
+            body: JSON.stringify(valores)
+        }); 
+        if (response.ok) 
             { 
-                const usuario = await response.json();
-                const telefone = document.getElementById('telefone').value = usuario.telefone;
-                    
-                
+                const user = await response.json();
+                alert(user);
+                //window.location.href = 'AtualizarPerfil.html';
             } 
             else 
             { 
@@ -20,17 +23,18 @@ try {
         } catch (err) { 
             console.error("Erro ao buscar dados:", err); 
         }
-
-
-
-
-
-
-
-async function AtualizarUsuario(event) {
-    event.preventDefault();
-    alert(emailUsuario);
 }
 
 
-document.getElementById('form-usuario').addEventListener('submit', AtualizarUsuario);
+/*sync function AtualizarUsuario(event) {
+    event.preventDefault();
+}*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const botaoPerfil = document.getElementById('botao-perfil');
+    if (botaoPerfil) {
+      botaoPerfil.addEventListener('click', setarDados);
+    }
+  });
+
+//document.getElementById('form-usuario').addEventListener('submit', AtualizarUsuario);
