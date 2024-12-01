@@ -15,11 +15,11 @@ CREATE TABLE animais (
 	data_resgate VARCHAR(50),
 
 	convivencia VARCHAR(50),
-	doenca_cronica VARHCAR(50),
+	doenca_cronica VARCHAR(50),
 	necessidade_especial VARCHAR(50), 
-    necessidade_atencao VARCHAR(50)
-    desc_necessidade VARCHAR(250)
-     foto BYTEA,
-     mime_type VARCHAR(255),
+    necessidade_atencao VARCHAR(50),
+    desc_necessidade VARCHAR(250),
+    foto BYTEA,
+    mime_type VARCHAR(255)
      
 );
