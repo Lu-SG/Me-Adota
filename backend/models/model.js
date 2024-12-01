@@ -112,7 +112,7 @@ export async function getUsuarioByEmail(email) {
     const params = [email];
     try {
         const result = await executeQuery(query, params);
-        return result.rows[0]; // Retorna o primeiro animal encontrado
+        return result.rows[0]; // Retorna o primeiro usuário encontrado
     } catch (err) {
         console.error("Erro ao buscar usuário por email:", err);
         throw err;

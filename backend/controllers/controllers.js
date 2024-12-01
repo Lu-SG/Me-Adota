@@ -132,3 +132,23 @@ export const checkEmail = async (req, res) => {
       } 
     };
 
+
+
+
+    export const getUserByEmail = async (req, res) => {
+        const { email } = req.body;
+    
+        try {
+          const user = await model.getUsuarioByEmail(email);
+      
+          if (user) { 
+            
+              res.send('Email encontrado.'); 
+          } 
+          else { 
+              res.status(404).send('Email não encontrado.'); 
+          } } catch (error) 
+          { 
+              res.status(500).send('Erro ao acessar o banco de dados.'); 
+          } 
+        };
