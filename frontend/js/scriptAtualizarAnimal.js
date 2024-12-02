@@ -96,44 +96,31 @@ if(animal.porte === 'P')
                          radioTmpN.checked = true;
                     }
                    
-                    
-        // Exemplo de objeto animal com dados binários
-        
-                // Exemplo de objeto animal com dados binários reais
-                animal = {
-                    foto: new Uint8Array([animal.foto])
-                };
-        
-                // Adicionar log para verificar os dados
-                console.log('Dados do animal:', animal);
-                console.log('Foto byte length:', animal.foto.length);
-        
-                // Função para converter um array de bytes em uma string Base64
-                function arrayBufferToBase64(buffer) {
-                    let binary = '';
-                    let bytes = new Uint8Array(buffer);
-                    let len = bytes.byteLength;
-                    for (let i = 0; i < len; i++) {
-                        binary += String.fromCharCode(bytes[i]);
-                    }
-                    return window.btoa(binary);
-                }
-        
-                // Verificar se os dados binários estão presentes
-                if (animal.foto.length > 0) {
-                    // Converter a foto para Base64
-                    const base64String = arrayBufferToBase64(animal.foto);
-                    console.log(`Base64 String: ${base64String}`);
-        
-                    // Definir o src da imagem com a string Base64
-                    const imgElement = document.getElementById('preview');
-                    imgElement.src = `data:${animal.mime_type};base64,${base64String}`;
-                    imgElement.style.display = 'block'; // Tornar a imagem visível
-                } else {
-                    console.error('A imagem não contém dados.');
-                }
-            
-        
+                    const fotoDiv = document.getElementById('foto');
+                
+                    function arrayBufferToBase64(buffer) { 
+                        let binary = ''; 
+                        let bytes = new Uint8Array(buffer); 
+                        let len = bytes.byteLength; 
+                        for (let i = 0; i < len; i++) 
+                            { 
+                                binary += String.fromCharCode(bytes[i]); 
+                            } 
+                            return window.btoa(binary); 
+                        }
+
+                        if (animal.foto.data && animal.foto.data.length > 0) 
+                            { 
+                                // Converter a foto para Base64 
+                                const base64String = arrayBufferToBase64(animal.foto.data); 
+                                console.log(`Base64 String: ${base64String}`);
+
+                                fotoDiv.innerHTML = `<img src="data:${animal.mime_type};base64,${base64String}"   style="max-width: 300px;" >`
+                            
+                            }else{
+                                console.error('A imagem não contém dados.');
+                            }
+        console.log(animal);
 
 
 
