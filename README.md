@@ -1,7 +1,7 @@
 # Me-Adota
 ## Descrição:
 
-Este projeto é um exemplo simples de uma aplicação web em Node.js que permite aos usuários fazerem listas de tarefas.
+O Me Adota é uma aplicação web desenvolvida para conectar protetores de animais, adotantes e tutores, promovendo um ambiente seguro e eficiente para proporcionar adoções responáveis.
 
 ## Instalação:
 
@@ -12,13 +12,13 @@ Este projeto é um exemplo simples de uma aplicação web em Node.js que permite
 Para iniciar os servidores: (em terminais separados)
 
 ### BackEnd:
-CD /backend
+`CD /backend`
 
 
-node app.js
+`node app.js`
 
 ### FrontEnd:
-CD /frontend
+`CD /frontend`
 
 
-npx live-server 
+`npx live-server` 
