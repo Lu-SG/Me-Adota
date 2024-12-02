@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeAdota Cadastro</title>
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/cadastroAnimal.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="tela-inicial"><h1>Me Adota</h1></a>
+    </header>
+    
+    <main>
+        <form id="form-animal"class="columns wraps" action="selecionarAnimal.html" method="get" enctype="multipart/form-data">
+            <h1 class="form-titulo">Selecionar Animal</h1>
+            
+
+            <div class="form-inputs columns wraps">
+                <div class="form-campos wraps">
+                    <input class="campo" id="id-animal" type="number" placeholder="Id do Animal" required>
+
+                    <input class="campo" id="nome" type="text" placeholder="Nome" disabled>
+                    <input class="campo" id="idade" type="text" placeholder="Idade" disabled>
+                    
+                    
+                </div>
+                <div class="form-campos wraps form-lista">
+                    <label for="especie-animal">Espécie:</label>
+                    <div class="form-campos wraps form-lista lista">
+                        <select class="select-front" id="especie-animal" name="especie-animal" id="especie-animal" disabled>
+                            <option value="" selected hidden disabled>Selecione</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Hamster">Hamster</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-campos wraps form-lista">
+                    <label for="raca-animal">Raça:</label>
+                    <div class="form-campos wraps form-lista lista">
+                        <input class="campo" id="raca-animal" type="text" placeholder="Raça" disabled>
+                            
+                        
+                    </div>
+                </div>
+                
+
+                <div class="form-endereco wraps">
+                    <h2 id="endereco-abrigo">Endereço do abrigo:</h2>
+                    <div class="form-campos wraps">
+                        <input class="campo" id="cidade" type="text" placeholder="Cidade" disabled>
+                        <select id="estado" name="estado" class="campo" disabled> 
+                            <option value="AC">Acre (AC)</option> 
+                            <option value="AL">Alagoas (AL)</option> 
+                            <option value="AP">Amapá (AP)</option> 
+                            <option value="AM">Amazonas (AM)</option> 
+                            <option value="BA">Bahia (BA)</option> 
+                            <option value="CE">Ceará (CE)</option> 
+                            <option value="DF">Distrito Federal (DF)</option> 
+                            <option value="ES">Espírito Santo (ES)</option> 
+                            <option value="GO">Goiás (GO)</option> 
+                            <option value="MA">Maranhão (MA)</option> 
+                            <option value="MT">Mato Grosso (MT)</option> 
+                            <option value="MS">Mato Grosso do Sul (MS)</option> 
+                            <option value="MG">Minas Gerais (MG)</option> 
+                            <option value="PA">Pará (PA)</option> 
+                            <option value="PB">Paraíba (PB)</option> 
+                            <option value="PR">Paraná (PR)</option> 
+                            <option value="PE">Pernambuco (PE)</option> 
+                            <option value="PI">Piauí (PI)</option> 
+                            <option value="RJ">Rio de Janeiro (RJ)</option> 
+                            <option value="RN">Rio Grande do Norte (RN)</option> 
+                            <option value="RS">Rio Grande do Sul (RS)</option> 
+                            <option value="RO">Rondônia (RO)</option> 
+                            <option value="RR">Roraima (RR)</option> 
+                            <option value="SC">Santa Catarina (SC)</option> 
+                            <option value="SP">São Paulo (SP)</option> 
+                            <option value="SE">Sergipe (SE)</option> 
+                            <option value="TO">Tocantins (TO)</option> 
+                        </select> 
+                        <input class="campo maior" id="rua" type="text" placeholder="Rua"disabled>
+                        <input class="campo" id="numero" type="text" placeholder="Número"disabled>
+                        <input class="campo" id="bairro" type="text" placeholder="Bairro" disabled>
+
+                        <input class="campo" id="complemento" type="text" placeholder="Complemento" disabled>
+                    </div>
+                </div>
+
+                <div class="form-campos wraps container-imagem">    
+                    <label for="imagem" id="texto-imagem">Insira uma imagem do pet:</label>
+                    <input type="file" id="inserir-imagem" name="imagem" accept="image/*" onchange="previewImage(event)" disabled>
+                    <br>
+                    <img id="preview" src="" alt="Pré-visualização" style="max-width: 300px; display: none;">
+                    <br>
+                </div>
+
+                <div class="form-boxes wraps">
+
+                    <div class="form-genero columns wraps">
+                        <h2>Sexo</h2>
+
+                        <div class="genero-opcoes columns">
+                            <div class="opcao">
+                                <input type="radio" name="sexo" id="check-macho" value="M" required>
+                                <label for="check-macho">Macho</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="sexo" id="check-femea" value="F">
+                                <label for="check-femea">Fêmea</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-porte columns wraps">
+                        <h2>Porte</h2>
+                        <div class="porte-opcoes columns">
+                            
+                            <div class="opcao">
+                                <input type="radio" name="porte-animal" id="porte-pequeno" value="P" disabled>
+                                <label for="porte-pequeno">P</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="porte-animal" id="porte-medio" value="M" disabled>
+                                <label for="porte-medio">M</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="porte-animal" id="porte-grande" value="G" disabled>
+                                <label for="porte-grande">G</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="porte-animal" id="porte-extra-grande" value="XG" disabled >
+                                <label for="porte-extra-grande">XG</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-doenca-cronica columns wraps">
+                        <h2>Possui doença crônica?</h2>
+                        
+                        <div class="opcao">
+                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim" disabled>
+                            <label for="doenca-cronica-possui">Sim</label>
+                        </div>
+
+                        <div class="opcao">
+                            <input type="radio" name="doenca-cronica" id="doenca-cronica-nao-possui" value="nao" disabled>
+                            <label for="doenca-cronica-nao-possui">Não</label>
+                        </div>
+                    </div>
+
+                    <div class="form-atencao columns wraps">
+                        <h2>Necessita muita atenção?</h2>
+                        
+                        <div class="opcao">
+                            <input type="radio" name="atencao" id="atencao-extra" value="sim" disabled>
+                            <label for="convivencia-boa">Sim</label>
+                        </div>
+
+                        <div class="opcao">
+                            <input type="radio" name="atencao" id="atencao-normal" value="nao" disabled>
+                            <label for="convivencia-ruim">Não</label>
+                        </div>
+                    </div>
+
+                    <div class="form-convivencia columns wraps">
+                        <h2>Convive bem com outros animais?</h2>
+                        
+                        <div class="opcao">
+                            <input type="radio" name="convivencia" id="convivencia-boa" value="sim"disabled>
+                            <label for="convivencia-boa">Sim</label>
+                        </div>
+
+                        <div class="opcao">
+                            <input type="radio" name="convivencia" id="convivencia-ruim" value="nao" disabled>
+                            <label for="convivencia-ruim">Não</label>
+                        </div>
+                    </div>
+
+                    <div class="form-preferencias columns wraps">
+                        <h2>Necessidades especiais</h2>
+
+                        <div class="preferencias-opcoes columns">
+
+                            <div class="opcao">
+                                <input type="radio" name="necessidade" id="necessidade-possui" value="sim" disabled>
+                                <label for="preferencia-possui">Possui</label>
+                            </div>
+
+                            <div class="opcao">
+                                <input type="radio" name="necessidade" id="necessidade-nao-possui" value="nao" disabled>
+                                <label for="preferencia-nao-possui">Não possui</label>
+                            </div>
+                        </div>
+
+                        <div id="descricao-necessidade" style="display:none;">
+                            <label for="descricao">Descreva a necessidade especial deste pet: <span class="texto-aside">(até 250 caractéres)</span></label>
+                            <textarea class="campo" id="descricao" rows="4" cols="50" placeholder="Deficiência..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-botoes wraps">
+                    <a href="index.html" class="botao">Voltar</a>
+                    <input id="select-animal"class="botao" type="submit" value="Selecionar Animal">
+                </div>
+            </div>
+        </form>
+    </main>
+
+    
+    <script src="js/scriptselecionarAnimal.js"></script>
+    <script src="js/PetFront.js"></script>
+</body>
+</html>

@@ -26,10 +26,10 @@ export async function addAnimal(req, res) {
 
 // Controller para buscar um animal por ID
 export async function getAnimalById(req, res) {
-    const { id } = req.params; // Obtém o ID da rota
+    const { id_animal } = req.params; // Obtém o ID da rota
 
     try {
-        const animal = await model.findAnimalById(id); // Chama a função do model
+        const animal = await model.findAnimalById(id_animal); // Chama a função do model
         if (animal) {
             res.status(200).json(animal); // Retorna o animal com status 200
         } else {

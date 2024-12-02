@@ -85,9 +85,9 @@ export async function addUser(user) {
 
 
 // Função para buscar um animal por ID
-export async function findAnimalById(id) {
-    const query = `SELECT * FROM animais WHERE id = $1`;
-    const params = [id];
+export async function findAnimalById(id_animal) {
+    const query = `SELECT * FROM animais WHERE id_animal = $1`;
+    const params = [id_animal];
     try {
         const result = await executeQuery(query, params);
         return result.rows[0]; // Retorna o primeiro animal encontrado
