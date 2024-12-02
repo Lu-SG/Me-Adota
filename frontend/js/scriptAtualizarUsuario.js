@@ -252,9 +252,47 @@ async function atualizarUsuario(event) {
 }
 
 
+async function excluirConta(){
+    const email = localStorage.getItem('emailUsuario');
+    const API_URL_EXCLUSAO = `http://localhost:3001/api/usuarios/excluirConta/${email}`;
+    const valores = {email};
+
+    const confirmar = confirm("Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.");
+
+    if(confirmar)
+    {
+        try {
+            const response = await fetch(API_URL_EXCLUSAO, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(valores)
+        });
+        if (response.ok) {
+            alert("Conta Excluída com sucesso.");
+        
+            window.location.href = "index.html";
+        } else {
+            alert("Erro ao excluir conta.");
+        }
+        } catch (err) {
+        console.error("Erro ao excluir conta:", err);
+        }
+    }
+    
+}
+
+
+
+
+    
+
+
+
+
     
 const botaoPerfil = document.getElementById('botao-perfil');
 if(botaoPerfil){
     document.getElementById('botao-perfil').addEventListener('click', setarDados);
 }
 document.getElementById('form-usuario-atualizacao').addEventListener('submit', atualizarUsuario);
+document.getElementById('excluir-conta').addEventListener('click', excluirConta);

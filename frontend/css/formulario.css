@@ -130,6 +130,11 @@ a.link{
     font-weight: bold;
 }
 
+a.linkExcluir{
+    text-decoration: none;
+    color:red;
+    font-weight: bold;
+}
 .link:hover{
     color: #2b335a;
 }

@@ -254,3 +254,16 @@ export async function updateUsuarioByEmail(user){
         }
 }
 
+export async function deleteUserByEmail(email){
+    try{
+        const query = `DELETE FROM usuarios WHERE email = $1`;
+        const params = [ email ];
+
+        const result = await executeQuery(query, params);
+        return result;
+    }catch(error){
+        console.error('Erro ao excluir Conta.', error);
+        throw error;
+    }
+}
+
