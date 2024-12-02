@@ -187,3 +187,21 @@ export const checkEmail = async (req, res) => {
                 res.status(500).send('Erro ao acessar o banco de dados.');
             }
         }
+
+        export const excluirConta = async (req, res) => {
+            const {email} = req.body;
+
+            try{
+                const userDelete = await model.deleteUserByEmail(email);
+                if(userDelete){
+                    res.status(200).send('Conta Excluída com sucesso.');
+                }
+                else{
+                    res.status(404).send('Conta não encontrada');
+                }
+
+            }catch(error){
+                console.error(error);
+                res.status(500).send('Erro ao excluir Usuário');
+            }
+        }

@@ -13,6 +13,13 @@
     />
     <link rel="stylesheet" href="css/padrao.css">
     <link rel="stylesheet" href="css/formulario.css">
+    <script>
+        function redirecionarComAtraso(url, delay) { 
+            setTimeout(function() { 
+                window.location.href = url; 
+            }, delay); 
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -234,6 +241,7 @@
             
 
 
+            <p>Deseja Excluir sua Conta? <a id="excluir-conta"  class="linkExcluir" href="#" >Excluir Conta</a></p>
 
         </form>
     </main>

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllAnimals, addAnimal, getAnimalById, addUser, getAllUsers, calcularCompatibilidade, checkEmail, setarDados, atualizarUsuario} from '../controllers/controllers.js';
+import { getAllAnimals, addAnimal, getAnimalById, addUser, getAllUsers, calcularCompatibilidade, checkEmail, setarDados, atualizarUsuario, excluirConta} from '../controllers/controllers.js';
 const router = express.Router();
 
 
@@ -16,7 +16,7 @@ router.post('/usuarios/checkEmail', checkEmail);
 
 router.post('/usuarios/setarDados/:email', setarDados);
 router.put('/usuarios/atualizarUsuario/:email', atualizarUsuario);
-
+router.delete('/usuarios/excluirConta/:email', excluirConta);
 
 router.get('/usuarios/animais/:email', calcularCompatibilidade);
 
