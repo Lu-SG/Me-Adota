@@ -152,3 +152,23 @@ export const checkEmail = async (req, res) => {
               res.status(500).send('Erro ao acessar o banco de dados.'); 
           } 
         };
+
+
+     export const setarDados = async (req, res) => {
+        const {email, teste} = req.body;
+
+        try{
+            const user = await model.getDadosByEmail(email);
+
+            if(user) {
+                return res.json(user);
+            }
+            else{
+                res.status(404).send('Dados não encontrados');
+            }
+        }catch(error)
+            {
+                res.status(500).send('Erro ao acessar o banco de dados.');
+            }
+        };
+     

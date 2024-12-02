@@ -223,5 +223,18 @@ export async function findUserByEmail(email, senha) {
   }
 };
 
+export async function getDadosByEmail(email){
+    try{
+        const query =`SELECT * FROM usuarios WHERE email = $1;`;
+        const params = [email];
+
+        const result = await executeQuery(query, params);
+        return  result.rows[0];
+    } catch (error) {
+        console.error('Erro ao buscar dados do usuário por Email.', error);
+        throw error;
+    }
+}
+
 
 

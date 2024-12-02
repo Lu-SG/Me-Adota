@@ -1,20 +1,25 @@
-const API_URL = `http://localhost:3001/api/usuarios/getUserByEmail`;
+
 
 async function setarDados() {
-    const teste = 'a';
-    const Email = localStorage.getItem('emailUsuario');
-    const valores = {Email, teste};
+    const email = localStorage.getItem('emailUsuario');
+    const valores = {email};
+    const API_URL_DADOS = `http://localhost:3001/api/usuarios/setarDados/${email}`;
     try { 
-        const response = await fetch(API_URL, { 
-            method: 'POST', // Ajustado para GET 
+        const response = await fetch(API_URL_DADOS, { 
+            method: 'POST',  
             headers: { 'Content-Type': 'application/json' } ,
             body: JSON.stringify(valores)
         }); 
         if (response.ok) 
             { 
                 const user = await response.json();
-                alert(user);
-                //window.location.href = 'AtualizarPerfil.html';
+
+                const userData = JSON.stringify(user);
+
+                let telefone = document.getElementById('telefoneATT').value;
+                telefone = user.telefone;
+                alert(user.telefone);
+                
             } 
             else 
             { 
@@ -23,6 +28,9 @@ async function setarDados() {
         } catch (err) { 
             console.error("Erro ao buscar dados:", err); 
         }
+
+
+        
 }
 
 
@@ -30,11 +38,8 @@ async function setarDados() {
     event.preventDefault();
 }*/
 
-document.addEventListener('DOMContentLoaded', () => {
-    const botaoPerfil = document.getElementById('botao-perfil');
-    if (botaoPerfil) {
-      botaoPerfil.addEventListener('click', setarDados);
-    }
-  });
+
+    
+
 
 //document.getElementById('form-usuario').addEventListener('submit', AtualizarUsuario);
