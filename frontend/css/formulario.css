@@ -29,7 +29,7 @@ form{
     align-items: center;
 }
 
-.form-titulo, #preferencias-titulo{
+.form-titulo, .preferencias-titulo{
     margin-bottom: 30px;
     text-align: center;
     text-transform: uppercase;
@@ -128,7 +128,7 @@ form p{
     margin-top: 20px;
 }
 
-#preferencias-titulo{
+.preferencias-titulo{
     margin-top: 30px;
     margin-bottom: 20px;
 }
