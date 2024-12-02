@@ -236,5 +236,21 @@ export async function getDadosByEmail(email){
     }
 }
 
+export async function updateUsuarioByEmail(user){
+    try{
+        const query = `UPDATE usuarios SET telefone = $1, estado = $2, cidade = $3, bairro = $4, rua = $5, numero = $6, complemento = $7, especie_desejada = $8, porte_desejado = $9, sexo_desejado = $10, aceita_necessidade_especial = $11, aceita_doenca_cronica = $12, ja_tem_outros_animais = $13, tem_tempo_pro_animal = $14 WHERE email = $15`;
+        const params = [
+            user.telefone, user.estado, user.cidade, user.bairro, user.rua, user.numero, user.complemento, user.especie_desejada, user.porte_desejado, user.sexo_desejado, user.aceita_necessidade_especial, user.aceita_doenca_cronica, user.ja_tem_outros_animais, user.tem_tempo_pro_animal, user.email];
+    
+            
+        const result = await executeQuery(query, params);
+        return result;
 
+        }
+        catch(error)
+        {
+            console.error('Erro ao Atualizar Dados.', error);
+            throw error;
+        }
+}
 

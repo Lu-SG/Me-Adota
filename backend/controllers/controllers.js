@@ -172,3 +172,18 @@ export const checkEmail = async (req, res) => {
             }
         };
      
+        export const atualizarUsuario = async (req, res) => {
+            const UserData = req.body
+
+            try{
+                const userUpdate = await model.updateUsuarioByEmail(UserData);
+                if(userUpdate){
+                    res.status(200).send('Dados Atualizados com sucesso');
+                }
+            }
+            
+            
+            catch(error){
+                res.status(500).send('Erro ao acessar o banco de dados.');
+            }
+        }
