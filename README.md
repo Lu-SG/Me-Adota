@@ -22,3 +22,8 @@ Para iniciar os servidores: (em terminais separados)
 
 
 `npx live-server` 
+
+### Banco de Dados:
+Para iniciar a operação do banco de dados, é necessário a instalação e configuração prévia de uma instancia PostGreSQL
+
+Após esse passo, executar os scrips de configuração (.SQL) presentes na pasta Scripts
