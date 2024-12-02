@@ -29,7 +29,7 @@ form{
     align-items: center;
 }
 
-.form-titulo{
+.form-titulo, #preferencias-titulo{
     margin-bottom: 30px;
     text-align: center;
     text-transform: uppercase;
@@ -75,26 +75,11 @@ input:valid, textarea:valid{
     margin: 30px 0px;
 }
 
-.form-genero, .form-preferencias{
+.form-genero{
     min-width: 100px;
     width: 50%;
 }
 
-.genero-opcoes, .preferencias-opcoes{
-    gap: 4px;
-}
-
-.form-boxes h2{
-    color: #2b335a;
-}
-
-.opcao > input{
-    margin-right: 4px;
-}
-
-.form-preferencias{
-    text-align: center;
-}
 
 .form-endereco{
     justify-content: center;
@@ -136,4 +121,51 @@ a.link{
 
 form p{
     margin-top: 20px;
+}
+
+#preferencias-titulo{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.container-preferencias{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.container-preferencia-especifica{
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    margin-top: 10px;
+}
+
+.container-preferencia-especifica p{
+    align-self: flex-start;
+    margin: 8px;
+    width: 100%;
+
+    font-weight: bold;
+    text-align: center;
+    color: #2b335a;
+}
+
+.container-preferencia-especifica select{
+    min-width: 170px;
+    max-width: 45%;
+    width: 100%;
+    outline: none;
+    border: 1px solid #ddd; 
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 1rem;
+    color: #707070;
+}
+
+.input-label label{
+    padding-left: 8px;
 }

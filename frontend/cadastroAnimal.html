@@ -31,9 +31,9 @@
                     <input class="campo" id="idade" type="text" placeholder="Idade" required>
 
                     <div class="form-campos wraps lista-container">
-
                         <div class="form-campos wraps form-lista">
                             <label for="especie-animal">Espécie:</label>
+
                             <div class="form-campos wraps form-lista lista">
                                 <select class="select-front" id="especie-animal" name="especie-animal" id="especie-animal" required>
                                     <option value="" selected hidden disabled>Selecione</option>
@@ -47,17 +47,17 @@
 
                         <div class="form-campos wraps form-lista">
                             <label for="raca-animal">Raça:</label>
+
                             <div class="form-campos wraps form-lista lista">
-                                <input class="campo" id="raca-animal" type="text" placeholder="Raça" required>
-                                    
-                                
+                                <input class="campo maior" id="raca-animal" type="text" placeholder="Raça" required>
                             </div>
                         </div>
                     </div>
                 </div>
-           
+
                 <div class="form-campos wraps" id="container-data-resgate">
                     <label for="data-resgate" id="resgate-texto">Data do Resgate:</label>
+
                     <div class="form-campos wraps" id="data-resgate">
                         <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input" required>
                     </div>
@@ -96,7 +96,7 @@
                             <option value="SE">Sergipe (SE)</option> 
                             <option value="TO">Tocantins (TO)</option> 
                         </select> 
-                        <input class="campo maior" id="rua" type="text" placeholder="Rua"required>
+                        <input class="campo maior" id="rua" type="text" placeholder="Logradouro"required>
                         <input class="campo" id="numero" type="text" placeholder="Número"required>
                         <input class="campo" id="bairro" type="text" placeholder="Bairro" required>
 
@@ -112,44 +112,46 @@
                     <br>
                 </div>
 
-                <div class="form-boxes wraps">
+                <div class="container-preferencias">
 
-                    <div class="form-genero columns wraps">
-                        <h2>Sexo</h2>
+                    <div class="container-preferencia-especifica columns">
+                        <p>Sexo</p>
 
-                        <div class="genero-opcoes columns">
-                            <div class="opcao">
+                        <div class="input-label columns">
+
+                            <div class="wraps">
                                 <input type="radio" name="sexo" id="check-macho" value="M" required>
                                 <label for="check-macho">Macho</label>
                             </div>
 
-                            <div class="opcao">
+                            <div class="wraps">
                                 <input type="radio" name="sexo" id="check-femea" value="F">
                                 <label for="check-femea">Fêmea</label>
                             </div>
+
                         </div>
                     </div>
 
-                    <div class="form-porte columns wraps">
-                        <h2>Porte</h2>
-                        <div class="porte-opcoes columns">
+                    <div class="container-preferencia-especifica columns">
+                        <p>Porte</p>
+                        <div class="input-label columns">
                             
-                            <div class="opcao">
+                            <div class="wraps">
                                 <input type="radio" name="porte-animal" id="porte-pequeno" value="P" required>
                                 <label for="porte-pequeno">P</label>
                             </div>
 
-                            <div class="opcao">
+                            <div class="wraps">
                                 <input type="radio" name="porte-animal" id="porte-medio" value="M">
                                 <label for="porte-medio">M</label>
                             </div>
 
-                            <div class="opcao">
+                            <div class="wraps">
                                 <input type="radio" name="porte-animal" id="porte-grande" value="G">
                                 <label for="porte-grande">G</label>
                             </div>
 
-                            <div class="opcao">
+                            <div class="wraps">
                                 <input type="radio" name="porte-animal" id="porte-extra-grande" value="XG" >
                                 <label for="porte-extra-grande">XG</label>
                             </div>
@@ -157,61 +159,67 @@
                         </div>
                     </div>
 
-                    <div class="form-doenca-cronica columns wraps">
-                        <h2>Possui doença crônica?</h2>
-                        
-                        <div class="opcao">
-                            <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim" required>
-                            <label for="doenca-cronica-possui">Sim</label>
-                        </div>
+                    <div class="container-preferencia-especifica columns">
 
-                        <div class="opcao">
-                            <input type="radio" name="doenca-cronica" id="doenca-cronica-nao-possui" value="nao">
-                            <label for="doenca-cronica-nao-possui">Não</label>
-                        </div>
-                    </div>
+                        <p>Possui doença crônica?</p>
 
-                    <div class="form-atencao columns wraps">
-                        <h2>Necessita muita atenção?</h2>
-                        
-                        <div class="opcao">
-                            <input type="radio" name="atencao" id="atencao-extra" value="sim" required>
-                            <label for="convivencia-boa">Sim</label>
-                        </div>
-
-                        <div class="opcao">
-                            <input type="radio" name="atencao" id="atencao-normal" value="nao">
-                            <label for="convivencia-ruim">Não</label>
-                        </div>
-                    </div>
-
-                    <div class="form-convivencia columns wraps">
-                        <h2>Convive bem com outros animais?</h2>
-                        
-                        <div class="opcao">
-                            <input type="radio" name="convivencia" id="convivencia-boa" value="sim"required>
-                            <label for="convivencia-boa">Sim</label>
-                        </div>
-
-                        <div class="opcao">
-                            <input type="radio" name="convivencia" id="convivencia-ruim" value="nao">
-                            <label for="convivencia-ruim">Não</label>
-                        </div>
-                    </div>
-
-                    <div class="form-preferencias columns wraps">
-                        <h2>Necessidades especiais</h2>
-
-                        <div class="preferencias-opcoes columns">
-
-                            <div class="opcao">
-                                <input type="radio" name="necessidade" id="necessidade-possui" value="sim" required>
-                                <label for="preferencia-possui">Possui</label>
+                        <div class="input-label columns">
+                            <div class="wraps">
+                                <input type="radio" name="doenca-cronica" id="doenca-cronica-possui" value="sim" required>
+                                <label for="doenca-cronica-possui">Sim</label>
                             </div>
 
-                            <div class="opcao">
-                                <input type="radio" name="necessidade" id="necessidade-nao-possui" value="nao">
-                                <label for="preferencia-nao-possui">Não possui</label>
+                            <div class="wraps">
+                                <input type="radio" name="doenca-cronica" id="doenca-cronica-nao-possui" value="nao">
+                                <label for="doenca-cronica-nao-possui">Não</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="container-preferencia-especifica columns">
+                        <p>Necessita muita atenção?</p>
+                        
+                        <div class="input-label columns">
+                            <div class="wraps">
+                                <input type="radio" name="atencao" id="atencao-extra" value="sim" required>
+                                <label for="convivencia-boa">Sim</label>
+                            </div>
+
+                            <div class="wraps">
+                                <input type="radio" name="atencao" id="atencao-normal" value="nao">
+                                <label for="convivencia-ruim">Não</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-preferencia-especifica columns">
+                        <p>Convive bem com outros animais?</p>
+                        <div class="input-label columns">
+                            <div class="wraps">
+                                <input type="radio" name="convivencia" id="convivencia-boa" value="sim"required>
+                                <label for="convivencia-boa">Sim</label>
+                            </div>
+
+                            <div class="wraps">
+                                <input type="radio" name="convivencia" id="convivencia-ruim" value="nao">
+                                <label for="convivencia-ruim">Não</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-preferencia-especifica columns">
+                        <p>Necessidades especiais</p>
+                            <div class="input-label columns">
+                                <div class="wraps">
+                                    <input type="radio" name="necessidade" id="necessidade-possui" value="sim" required>
+                                    <label for="preferencia-possui">Possui</label>
+                                </div>
+
+                                <div class="wraps">
+                                    <input type="radio" name="necessidade" id="necessidade-nao-possui" value="nao">
+                                    <label for="preferencia-nao-possui">Não possui</label>
+                                </div>
                             </div>
                         </div>
 
@@ -227,6 +235,7 @@
                     <a href="index.html" class="botao">Voltar</a>
                     <input id="cadastroAnimal"class="botao" type="submit" value="Cadastrar">
                 </div>
+
             </div>
         </form>
     </main>

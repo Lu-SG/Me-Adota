@@ -21,213 +21,192 @@
     
     <main>
         <form onsubmit="return validarDados(event)" class="columns wraps" id="form-usuario" method="post" enctype="multipart/form-data"  >
+            
             <h1 class="form-titulo">Cadastro</h1>
             
-
             <div class="form-inputs columns wraps" >
                 <div class="form-campos wraps">
-                    <input class="campo" id="nome" type="text" placeholder="Nome" required>
+                    <input class="campo maior" id="nome" type="text" placeholder="Nome" required>
                     <input class="campo maior" id="email" type="text" placeholder="Email"required>
                     <input class="campo" id="telefone" type="text" placeholder="Telefone"required>
-                    
-                    <input class="campo" id="senha" type="password" placeholder="Senha" name="" id=""required>
-                    
-                
-                    
-                </div>
+                    <input class="campo" id="senha" type="password" placeholder="Senha" name="" id=""required>           
+            </div>
            
 
-                <div class="form-endereco wraps">
-                    <select id="estado" name="estado" class="campo"> 
-                        <option value="AC">Acre (AC)</option> 
-                        <option value="AL">Alagoas (AL)</option> 
-                        <option value="AP">Amapá (AP)</option> 
-                        <option value="AM">Amazonas (AM)</option> 
-                        <option value="BA">Bahia (BA)</option> 
-                        <option value="CE">Ceará (CE)</option> 
-                        <option value="DF">Distrito Federal (DF)</option> 
-                        <option value="ES">Espírito Santo (ES)</option> 
-                        <option value="GO">Goiás (GO)</option> 
-                        <option value="MA">Maranhão (MA)</option> 
-                        <option value="MT">Mato Grosso (MT)</option> 
-                        <option value="MS">Mato Grosso do Sul (MS)</option> 
-                        <option value="MG">Minas Gerais (MG)</option> 
-                        <option value="PA">Pará (PA)</option> 
-                        <option value="PB">Paraíba (PB)</option> 
-                        <option value="PR">Paraná (PR)</option> 
-                        <option value="PE">Pernambuco (PE)</option> 
-                        <option value="PI">Piauí (PI)</option> 
-                        <option value="RJ">Rio de Janeiro (RJ)</option> 
-                        <option value="RN">Rio Grande do Norte (RN)</option> 
-                        <option value="RS">Rio Grande do Sul (RS)</option> 
-                        <option value="RO">Rondônia (RO)</option> 
-                        <option value="RR">Roraima (RR)</option> 
-                        <option value="SC">Santa Catarina (SC)</option> 
-                        <option value="SP">São Paulo (SP)</option> 
-                        <option value="SE">Sergipe (SE)</option> 
-                        <option value="TO">Tocantins (TO)</option> 
-                    </select>                    
-                    <input class="campo" id="cidade" type="text" placeholder="Cidade"required>
-                    <input class="campo maior" id="bairro" type="text" placeholder="Bairro"required>
-                    <input class="campo" id="rua" type="text" placeholder="Rua"required>
-                    <input class="campo" id="numero" type="text" placeholder="Número"required>
-                    <input class="campo" id="complemento" type="text" placeholder="Complemento">
+            <div class="form-endereco wraps">
+                <select id="estado" name="estado" class="campo"> 
+                    <option value="AC">Acre (AC)</option> 
+                    <option value="AL">Alagoas (AL)</option> 
+                    <option value="AP">Amapá (AP)</option> 
+                    <option value="AM">Amazonas (AM)</option> 
+                    <option value="BA">Bahia (BA)</option> 
+                    <option value="CE">Ceará (CE)</option> 
+                    <option value="DF">Distrito Federal (DF)</option> 
+                    <option value="ES">Espírito Santo (ES)</option> 
+                    <option value="GO">Goiás (GO)</option> 
+                    <option value="MA">Maranhão (MA)</option> 
+                    <option value="MT">Mato Grosso (MT)</option> 
+                    <option value="MS">Mato Grosso do Sul (MS)</option> 
+                    <option value="MG">Minas Gerais (MG)</option> 
+                    <option value="PA">Pará (PA)</option> 
+                    <option value="PB">Paraíba (PB)</option> 
+                    <option value="PR">Paraná (PR)</option> 
+                    <option value="PE">Pernambuco (PE)</option> 
+                    <option value="PI">Piauí (PI)</option> 
+                    <option value="RJ">Rio de Janeiro (RJ)</option> 
+                    <option value="RN">Rio Grande do Norte (RN)</option> 
+                    <option value="RS">Rio Grande do Sul (RS)</option> 
+                    <option value="RO">Rondônia (RO)</option> 
+                    <option value="RR">Roraima (RR)</option> 
+                    <option value="SC">Santa Catarina (SC)</option> 
+                    <option value="SP">São Paulo (SP)</option> 
+                    <option value="SE">Sergipe (SE)</option> 
+                    <option value="TO">Tocantins (TO)</option> 
+                </select>                    
+                <input class="campo" id="cidade" type="text" placeholder="Cidade"required>
+                <input class="campo maior" id="bairro" type="text" placeholder="Bairro"required>
+                <input class="campo" id="rua" type="text" placeholder="Logradouro"required>
+                <input class="campo" id="numero" type="text" placeholder="Número"required>
+                <input class="campo maior" id="complemento" type="text" placeholder="Complemento">
+            </div>
+
+            <h2 id="preferencias-titulo">Preferências</h2>
+            <div class="container-preferencias">
+
+                <div class="container-preferencia-especifica columns">
+                    <p>Espécie Desejada:</p>
+                    <div class="form-campos wraps form-lista lista">
+                        <select class="select-front" id="especie" name="especie" id="especie" required>
+                            <option value="" selected hidden disabled>Selecione</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Hamster">Hamster</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="container-preferencia-especifica columns"> 
+                    <p>Porte desejado:</p>
+
+                    <div class="input-label columns">
+
+                        <div class="wraps">
+                            <input type="radio" id="porte_p" name="porte" value="P" required>
+                            <label for="porte_p">P</label>
+                        </div>
+                        
+                        <div class="wraps">
+                            <input type="radio" id="porte_m" name="porte" value="M"> 
+                            <label for="porte_m">M</label> 
+                        </div>
+
+                        <div class="wraps">
+                            <input type="radio" id="porte_g" name="porte" value="G"> 
+                            <label for="porte_g">G</label>     
+                        </div>
+
+                        <div class="wraps">
+                            <input type="radio" id="porte_xg" name="porte" value="XG"> 
+                            <label for="porte_xg">XG</label> 
+                        </div>
+                    </div> 
+
                 </div>
 
-          <h2 class="form-titulo">Preferências</h2>
-          <div class="form-campos wraps form-lista">
-            <label for="especie-desejada">Espécie Desejada:</label>
-            <div class="form-campos wraps form-lista lista">
-                <select class="select-front" id="especie" name="especie" id="especie" required>
-                    <option value="" selected hidden disabled>Selecione</option>
-                    <option value="Cachorro">Cachorro</option>
-                    <option value="Gato">Gato</option>
-                    <option value="Hamster">Hamster</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
-        </div>
-          
-          <div class="columns wraps">
-            <div> 
-                <p>Porte desejado:</p> 
-                <div> 
-                    <input type="radio" id="porte_p" name="porte" value="P" required> 
-                    <label for="porte_p">P</label> 
-                    <input type="radio" id="porte_m" name="porte" value="M"> 
-                    <label for="porte_m">M</label> 
-                    <input type="radio" id="porte_g" name="porte" value="G"> 
-                    <label for="porte_g">G</label> 
-                    <input type="radio" id="porte_xg" name="porte" value="XG"> 
-                    <label for="porte_xg">XG</label> 
-                </div> 
-            </div>
-          </div>
+                <div class="container-preferencia-especifica columns"> 
+                        <p>Sexo desejado:</p> 
+                        <div class="input-label columns"> 
+                            
+                            <div class="wraps">
+                                <input type="radio" id="sexo_m" name="sexo" value="M" required> 
+                                <label for="sexo_m">M</label> 
+                            </div>
 
-          <div class="form-boxes form-genero"> 
-            <div class="genero-opcoes"> 
-                <p>Sexo desejado:</p> 
-                <div> 
-                    <input type="radio" id="sexo_m" name="sexo" value="M" required> 
-                    <label for="sexo_m">M</label> 
-                    <input type="radio" id="sexo_f" name="sexo" value="F">
-                    <label for="sexo_f">F</label>
-                </div> 
-            </div> 
-        </div>
-
-        <div class="form-boxes form-preferencias"> 
-            <div class="preferencias-opcoes"> 
-                <p>Aceita necessidade especial?</p> 
-                <div>
-                    <input type="radio" id="necessidade_sim" name="necessidade" value="sim" required> 
-                    <label for="necessidade_sim">Sim</label> 
-                    <input type="radio" id="necessidade_nao" name="necessidade" value="nao"> 
-                    <label for="necessidade_nao">Não</label> 
-                </div> 
-            </div> 
-        </div>
-
-        <div class="form-boxes form-preferencias"> 
-            <div class="preferencias-opcoes"> 
-                <p>Aceita doença crônica?</p> 
-                <div> 
-                    <input type="radio" id="doenca_sim" name="doenca" value="sim" required> 
-                    <label for="doenca_sim">Sim</label> 
-                    <input type="radio" id="doenca_nao" name="doenca" value="nao"> 
-                    <label for="doenca_nao">Não</label> 
+                            <div class="wraps">
+                                <input type="radio" id="sexo_f" name="sexo" value="F">
+                                <label for="sexo_f">F</label>
+                            </div>
+                            
+                        </div> 
                 </div>
-            </div> 
-        </div> 
-        <div class="form-boxes form-preferencias"> 
-            <div class="preferencias-opcoes"> 
-                <p>Já tem outros animais?</p> 
-                <div> 
-                    <input type="radio" id="outros_sim" name="outros" value="sim" required> 
-                    <label for="outros_sim">Sim</label> 
-                    <input type="radio" id="outros_nao" name="outros" value="nao"> 
-                    <label for="outros_nao">Não</label> 
-                </div> 
-            </div> 
-        </div> 
-        <div class="form-boxes form-preferencias"> 
-            <div class="preferencias-opcoes"> 
-                <p>Tem tempo para dedicar ao animal?</p>
-                <div> 
-                    <input type="radio" id="tempo_sim" name="tempo" value="sim" required> 
-                    <label for="tempo_sim">Sim</label> 
-                    <input type="radio" id="tempo_nao" name="tempo" value="nao"> 
-                    <label for="tempo_nao">Não</label> 
-                </div> 
-            </div> 
-        </div>
-          
-          
-          
-          <!--      <div class="form-boxes wraps">
-                    <div class="form-genero columns wraps">
-                        <h2>Gênero</h2>
 
-                        <div class="genero-opcoes columns">
-                            <div class="opcao">
-                                <input type="radio" name="genero" id="check-masculino">
-                                <label for="check-masculino">Masculino</label>
-                            </div>
+                <div class="container-preferencia-especifica columns"> 
+                    <p>Aceita necessidade especial?</p> 
+                    <div class="input-label columns">
 
-                            <div class="opcao">
-                                <input type="radio" name="genero" id="check-feminino">
-                                <label for="check-feminino">Feminino</label>
-                            </div>
+                        <div class="wraps">
+                            <input type="radio" id="necessidade_sim" name="necessidade" value="sim" required>
+                            <label for="necessidade_sim">Sim</label>
+                        </div>
+
+                        <div class="wraps">
+                            <input type="radio" id="necessidade_nao" name="necessidade" value="nao">
+                            <label for="necessidade_nao">Não</label>
                         </div>
 
                     </div>
+                </div>
 
-                    <div class="form-preferencias columns wraps">
-                        <h2>Preferências</h2>
+                <div class="container-preferencia-especifica columns"> 
+                    <p>Aceita doença crônica?</p> 
+                    <div class="input-label columns">
 
-                        <div class="form-inputs columns wraps">
+                        <div class="wraps">
+                            <input type="radio" id="doenca_sim" name="doenca" value="sim" required>
+                            <label for="doenca_sim">Sim</label>
                         </div>
 
-                    
-
-
-
-                        <div class="preferencias-opcoes columns">
-
-                            <div class="opcao">
-                                <input type="checkbox" name="preferencia" id="preferencia-masculino">
-                                <label for="preferencia-masculino">Masculino</label>
-                            </div>
-
-                            <div class="opcao">
-                                <input type="checkbox" name="preferencia" id="preferencia-feminino">
-                                <label for="preferencia-feminino">Feminino</label>
-                            </div>
+                        <div class="wraps">
+                            <input type="radio" id="doenca_nao" name="doenca" value="nao">
+                            <label for="doenca_nao">Não</label>
                         </div>
+
+                    </div> 
+                </div>
+
+                <div class="container-preferencia-especifica columns"> 
+                    <p>Já tem outros animais?</p> 
+
+                    <div class="input-label columns">
+
+                        <div class="wraps">
+                            <input type="radio" id="outros_sim" name="outros" value="sim" required>
+                            <label for="outros_sim">Sim</label>
+                        </div>
+
+                        <div class="wraps">
+                            <input type="radio" id="outros_nao" name="outros" value="nao">
+                            <label for="outros_nao">Não</label>
+                        </div>
+
                     </div>
                 </div>
-            -->
-                
 
+                <div class="container-preferencia-especifica columns">
+                    <p>Tem tempo para dedicar ao animal?</p>
+                    <div class="input-label columns">
 
+                        <div class="wraps">
+                            <input type="radio" id="tempo_sim" name="tempo" value="sim" required>
+                            <label for="tempo_sim">Sim</label>
+                        </div>
 
+                        <div class="wraps">
+                            <input type="radio" id="tempo_nao" name="tempo" value="nao">
+                            <label for="tempo_nao">Não</label>
+                        </div>
 
-
-
-
-                <div class="form-botoes wraps">
-                    <a href="index.html" class="botao">Voltar</a>
-                    <button id="cadastro"class="botao" type="submit">Cadastrar</button>
-
-                
+                    </div>
+                </div>
             </div>
 
-            
-            
-
-
-
+            <div class="form-botoes wraps">
+                <a href="index.html" class="botao">Voltar</a>
+                <button id="cadastro"class="botao" type="submit">Cadastrar</button>
+            </div>
             <p>Já possui uma conta? <a class="link" href="login.html">Logar</a></p>
+
         </form>
     </main>
 
