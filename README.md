@@ -13,8 +13,12 @@ Para iniciar os servidores: (em terminais separados)
 
 ### BackEnd:
 CD /backend
+
+
 node app.js
 
 ### FrontEnd:
 CD /frontend
+
+
 npx live-server 
