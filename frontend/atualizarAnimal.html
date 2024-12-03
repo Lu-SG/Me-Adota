@@ -21,7 +21,7 @@
     </header>
     
     <main>
-        <form id="form-animal"class="columns wraps" action="selecionarAnimal.html" enctype="multipart/form-data">
+        <form id="form-animal-atualizacao"class="columns wraps" action="atualizarAnimal.html" method="put"enctype="multipart/form-data">
             <h1 class="form-titulo">Atualização de Animais</h1>
             
 
@@ -55,7 +55,13 @@
                         
                     </div>
                 </div>
-                
+                <div class="form-campos wraps" id="container-data-resgate">
+                    <label for="data-resgate" id="resgate-texto">Data do Resgate:</label>
+
+                    <div class="form-campos wraps" id="data-resgate">
+                        <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input" required>
+                    </div>
+                </div>
 
                 <div class="form-endereco wraps">
                     <h2 id="endereco-abrigo">Endereço do abrigo:</h2>
@@ -94,7 +100,7 @@
                         <input class="campo" id="numero" type="text" placeholder="Número"required>
                         <input class="campo" id="bairro" type="text" placeholder="Bairro" required>
 
-                        <input class="campo" id="complemento" type="text" placeholder="Complemento" required>
+                        <input class="campo" id="complemento" type="text" placeholder="Complemento">
                     </div>
                 </div>
 

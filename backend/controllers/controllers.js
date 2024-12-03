@@ -205,3 +205,19 @@ export const checkEmail = async (req, res) => {
                 res.status(500).send('Erro ao excluir Usuário');
             }
         }
+
+        export const atualizarAnimal = async (req, res) => {
+            const  AnimalData  = req.body
+
+            try{
+                const animalUpdate = await model.updateAnimalById(AnimalData);
+                if(animalUpdate){
+                    res.status(200).send('Dados do animal Atualizados com sucesso');
+                }
+            }
+            
+            
+            catch(error){
+                res.status(500).send('Erro ao acessar o banco de dados.');
+            }
+        }

@@ -56,7 +56,13 @@
                     </div>
                 </div>
                 
+                <div class="form-campos wraps" id="container-data-resgate">
+                    <label for="data-resgate" id="resgate-texto">Data do Resgate:</label>
 
+                    <div class="form-campos wraps" id="data-resgate">
+                        <input class="campo" type="text" placeholder="dd/mm/aaaa" id="data-resgate-input" disabled>
+                    </div>
+                </div>
                 <div class="form-endereco wraps">
                     <h2 id="endereco-abrigo">Endereço do abrigo:</h2>
                     <div class="form-campos wraps">
@@ -113,12 +119,12 @@
 
                         <div class="genero-opcoes columns">
                             <div class="opcao">
-                                <input type="radio" name="sexo" id="check-macho" value="M" required>
+                                <input type="radio" name="sexo" id="check-macho" value="M" disabled>
                                 <label for="check-macho">Macho</label>
                             </div>
 
                             <div class="opcao">
-                                <input type="radio" name="sexo" id="check-femea" value="F">
+                                <input type="radio" name="sexo" id="check-femea" value="F" disabled>
                                 <label for="check-femea">Fêmea</label>
                             </div>
                         </div>
@@ -227,6 +233,7 @@
 
     
     <script src="js/scriptselecionarAnimal.js"></script>
+    <script src="js/scriptAtualizarAnimal.js"></script>
     <script src="js/PetFront.js"></script>
 </body>
 </html>

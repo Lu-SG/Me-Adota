@@ -1,4 +1,7 @@
-const id_animal = localStorage.getItem('id_animal');
+
+
+setTimeout(function setarDadosAnimal() {
+    const id_animal = localStorage.getItem('id_animal');
 const animalString = localStorage.getItem('animal') 
 let animal = JSON.parse(animalString);
 
@@ -17,7 +20,7 @@ document.getElementById('rua').value = animal.rua;
 document.getElementById('numero').value = animal.numero;
 document.getElementById('bairro').value = animal.bairro;
 document.getElementById('complemento').value = animal.complemento;
-
+document.getElementById('data-resgate-input').value = animal.data_resgate;
 if(animal.porte === 'P')
     {
         const radioP = document.getElementById('porte-pequeno');
@@ -85,7 +88,7 @@ if(animal.porte === 'P')
                     const radioAnN = document.getElementById('convivencia-ruim');
                      radioAnN.checked = true;
                 }
-                if(animal.necessidade_atencao === 'sim')
+                if(animal.necessidade_atencao === 'sim' )
                     {
                         const radioTmpS = document.getElementById('atencao-extra');
                         radioTmpS.checked = true;
@@ -113,21 +116,159 @@ if(animal.porte === 'P')
                             { 
                                 // Converter a foto para Base64 
                                 const base64String = arrayBufferToBase64(animal.foto.data); 
-                                console.log(`Base64 String: ${base64String}`);
 
                                 fotoDiv.innerHTML = `<img src="data:${animal.mime_type};base64,${base64String}"   style="max-width: 300px;" >`
                             
                             }else{
                                 console.error('A imagem não contém dados.');
                             }
-        console.log(animal);
+}, 200);
+
+async function atualizarAnimal(event){
+    const id_animal = localStorage.getItem('id_animal');
+
+    const nome = document.getElementById('nome').value;
+    const idade = document.getElementById('idade').value;
+    const raca = document.getElementById('raca-animal').value;
+
+    const estado = document.getElementById('estado').value;
+    const cidade = document.getElementById('cidade').value;
+    const bairro = document.getElementById('bairro').value;
+    const rua = document.getElementById('rua').value;
+    const numero = document.getElementById('numero').value;
+    const complemento = document.getElementById('complemento').value;
+    const data_resgate = document.getElementById('data-resgate-input').value;
+    let especie = document.getElementById('especie-animal').value;
+
+    let portes = document.querySelectorAll('input[name="porte-animal"]');
+    let porte = '';
+    for(const opcao1 of portes){
+        if(opcao1.checked){
+            porte = opcao1.value;
+            break;
+        }
+    }
+
+    let sexos = document.querySelectorAll('input[name="sexo"]');
+    let sexo = '';
+    for(const opcao of sexos){
+        if(opcao.checked){
+            sexo = opcao.value;
+            break;
+        }
+    }
+
+    let doencaBoolean = document.querySelectorAll('input[name="doenca-cronica"]');
+    let doenca_cronica = '';
+    for(const opcao of doencaBoolean){
+        if(opcao.checked){
+            doenca_cronica = opcao.value;
+            break;
+        }
+    }
+
+    let necessidade_especial_Boolean = document.querySelectorAll('input[name="necessidade"]');
+    let necessidade_especial = '';
+    for(const opcao of necessidade_especial_Boolean){
+        if(opcao.checked){
+            necessidade_especial = opcao.value;
+            break;
+        }
+    }
+
+    let convivencia_Boolean = document.querySelectorAll('input[name="convivencia"]');
+    let convivencia = '';
+    for(const opcao of convivencia_Boolean){
+        if(opcao.checked){
+            convivencia = opcao.value;
+            break;
+        }
+    }
+
+    let necessidade_atencao_Boolean = document.querySelectorAll('input[name="atencao"]');
+    let necessidade_atencao = '';
+    for(const opcao of necessidade_atencao_Boolean){
+        if(opcao.checked){
+            necessidade_atencao = opcao.value;
+            break;
+        }
+    }
+
+    const desc_necessidade = document.getElementById('descricao').value;
+
+    const mime_type = 'a';
+    
+    event.preventDefault();
 
 
 
 
-async function updateAnimalById(){
 
+    function validarNumero()
+    {
+        if (!isNaN(numero) && numero !== '') 
+            { 
+                return true; 
+            } 
+            else 
+            { 
+                alert('Número inválido. Por favor, insira um número.'); 
+                 return false; 
+            }
+    }
+
+    if(validarNumero() == true)
+        {
+                // Remove a parte 'data:image/jpeg;base64,' 
+                const updateAnimalData = { 
+                    nome, 
+                    idade, 
+                    especie, 
+                    raca, 
+                    sexo, 
+                    porte, 
+                    numero, 
+                    rua, 
+                    cidade, 
+                    estado, 
+                    complemento, 
+                    data_resgate, 
+                    convivencia, 
+                    doenca_cronica, 
+                    necessidade_especial, 
+                    necessidade_atencao,
+                    foto, // Inclui a imagem codificada em Base64 
+                    mime_type,
+                    desc_necessidade,
+                    bairro
+                };
+                
+            try {
+                const response = await fetch(`http://localhost:3001/api/animais/atualizarAnimal/${id_animal}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updateAnimalData)
+                });
+                if (response.ok) {
+                    
+                    alert("Animal atualizado com sucesso!");
+                } else {
+                    alert("Erro ao atualizar animal.");
+                }
+            } catch (err) {
+                console.error("Erro ao atualizar animal:", err);
+            }
+        
+        }
+        
+    }
+        
+
+
+
+const botaoSelecionar = document.getElementById('select-animal');
+if(botaoSelecionar){
+    document.getElementById('select-animal').addEventListener('click', setarDadosAnimal);
 }
 
-
-document.getElementById('update-animal').addEventListener('submit', updateAnimalById);
+document.getElementById('form-animal-atualizacao').addEventListener('submit', atualizarAnimal);
