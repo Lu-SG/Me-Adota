@@ -270,7 +270,10 @@ export async function deleteUserByEmail(email){
 export async function updateAnimalById(animal){
     try{
         const query = `UPDATE animais SET nome = $1, idade = $2, especie = $3, raca = $4, sexo = $5, porte = $6, numero = $7, rua = $8, cidade = $9, estado = $10, complemento = $11, data_resgate = $12, convivencia = $13, doenca_cronica = $14, necessidade_especial = $15, necessidade_atencao = $16, foto = $17, mime_type = $18, desc_necessidade = $19, bairro = $20 WHERE id_animal = $21`;
-        const params = [animal.nome, animal.idade, animal.especie, animal.raca, animal.sexo, animal.porte,   animal.numero, animal.rua, animal.cidade,   animal.estado, animal.complemento, animal.data_resgate, animal.convivencia, animal.doenca_cronica, animal.necessidade_especial, animal.necessidade_atencao, animal.foro, animal.mime_type, animal.desc_necessidade, animal.bairro, animal.id_animal]
+        const params = [animal.nome, animal.idade, animal.especie, animal.raca, animal.sexo, animal.porte,   
+            animal.numero, animal.rua, animal.cidade,   animal.estado, animal.complemento, 
+            animal.data_resgate, animal.convivencia, animal.doenca_cronica, animal.necessidade_especial, 
+            animal.necessidade_atencao, animal.foto, animal.mime_type, animal.desc_necessidade, animal.bairro, animal.id_animal]
     
             
         const result = await executeQuery(query, params);

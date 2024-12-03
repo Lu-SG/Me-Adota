@@ -21,7 +21,7 @@
     </header>
     
     <main>
-        <form id="form-animal-atualizacao"class="columns wraps" action="atualizarAnimal.html" method="put"enctype="multipart/form-data">
+        <form id="form-animal-atualizacao"class="columns wraps" action="atualizarAnimal.html" method="put" enctype="multipart/form-data">
             <h1 class="form-titulo">Atualização de Animais</h1>
             
 
@@ -104,13 +104,12 @@
                     </div>
                 </div>
 
-                <div  class="form-campos wraps container-imagem">    
+                <div class="form-campos wraps container-imagem">    
                     <label for="imagem" id="texto-imagem">Insira uma imagem do pet:</label>
-                    <input type="file" id="inserir-imagem" name="imagem" accept="image/*" onchange="previewImage(event)" >
+                    <input type="file" id="inserir-imagem" name="imagem" accept="image/*">
                     <br>
-                    <div id="foto">
+                    <img id="preview" src="" alt="Pré-visualização" style="max-width: 300px; display: none;">
 
-                    </div>
                     <br>
                 </div>
 
@@ -234,7 +233,7 @@
     </main>
 
     
-    <script src="js/scriptAtualizarAnimal.js"></script>
-    <script src="js/PetFront.js"></script>
+    <script type="module" src="js/scriptAtualizarAnimal.js"></script>
+    <script type="module" src="js/PetFrontAtualizacao.js"></script>
 </body>
 </html>

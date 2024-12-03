@@ -1,5 +1,4 @@
 
-
 setTimeout(function setarDadosAnimal() {
     const id_animal = localStorage.getItem('id_animal');
 const animalString = localStorage.getItem('animal') 
@@ -99,7 +98,7 @@ if(animal.porte === 'P')
                          radioTmpN.checked = true;
                     }
                    
-                    const fotoDiv = document.getElementById('foto');
+                    var foto = document.getElementById('preview');
                 
                     function arrayBufferToBase64(buffer) { 
                         let binary = ''; 
@@ -117,14 +116,21 @@ if(animal.porte === 'P')
                                 // Converter a foto para Base64 
                                 const base64String = arrayBufferToBase64(animal.foto.data); 
 
-                                fotoDiv.innerHTML = `<img src="data:${animal.mime_type};base64,${base64String}"   style="max-width: 300px;" >`
-                            
+                                foto.src = `data:${animal.mime_type};base64,${base64String}`;
+                                foto.style.display = "block";
                             }else{
                                 console.error('A imagem não contém dados.');
                             }
+                            
+                            const foto_animal = localStorage.setItem('foto', animal.foto);
+                            const mime_type = localStorage.setItem('mime_type', animal.mime_type);
+
+                            const verificacao = localStorage.setItem('verificacao', 1);
+
 }, 200);
 
 async function atualizarAnimal(event){
+    event.preventDefault();
     const id_animal = localStorage.getItem('id_animal');
 
     const nome = document.getElementById('nome').value;
@@ -195,11 +201,11 @@ async function atualizarAnimal(event){
     }
 
     const desc_necessidade = document.getElementById('descricao').value;
-
-    const mime_type = 'a';
     
-    event.preventDefault();
-
+    
+       
+    
+    
 
 
 
@@ -219,8 +225,16 @@ async function atualizarAnimal(event){
 
     if(validarNumero() == true)
         {
-                // Remove a parte 'data:image/jpeg;base64,' 
-                const updateAnimalData = { 
+            const verificacao = localStorage.getItem('verificacao');
+
+            if(verificacao == 1)
+            {
+                const fileInput = document.getElementById('inserir-imagem'); 
+                    const file = fileInput.files[0]; 
+                    const reader = new FileReader();
+                reader.onloadend = async () => { 
+                    const base64Image = reader.result.split(',')[1];
+                var animalData = { 
                     nome, 
                     idade, 
                     especie, 
@@ -237,17 +251,52 @@ async function atualizarAnimal(event){
                     doenca_cronica, 
                     necessidade_especial, 
                     necessidade_atencao,
-                    foto, // Inclui a imagem codificada em Base64 
-                    mime_type,
+                    foto: base64Image, // Inclui a imagem codificada em Base64 
+                    mime_type: file.type,
                     desc_necessidade,
-                    bairro
+                    bairro,
+                    id_animal
+            }
+            }
+        }
+            if(verificacao == 2)
+                {
+                    const fileInput = document.getElementById('inserir-imagem'); 
+                    const file = fileInput.files[0]; 
+                    const reader = new FileReader();
+                reader.onloadend = async () => { 
+                    const base64Image = reader.result.split(',')[1]; 
+                    var animalData = { 
+                    nome, 
+                    idade, 
+                    especie, 
+                    raca, 
+                    sexo, 
+                    porte, 
+                    numero, 
+                    rua, 
+                    cidade, 
+                    estado, 
+                    complemento, 
+                    data_resgate, 
+                    convivencia, 
+                    doenca_cronica, 
+                    necessidade_especial, 
+                    necessidade_atencao,
+                    foto: base64Image, // Inclui a imagem codificada em Base64 
+                    mime_type: file.type,
+                    desc_necessidade,
+                    bairro,
+                    id_animal
+            }
+        } 
                 };
                 
             try {
                 const response = await fetch(`http://localhost:3001/api/animais/atualizarAnimal/${id_animal}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(updateAnimalData)
+                    body: JSON.stringify(animalData)
                 });
                 if (response.ok) {
                     
@@ -258,11 +307,36 @@ async function atualizarAnimal(event){
             } catch (err) {
                 console.error("Erro ao atualizar animal:", err);
             }
-        
+            }
         }
+    
         
+    
+
+function previewImage(event) {
+    const input = event.target;
+
+    const file = input.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            let foto = document.getElementById('preview');
+
+
+            foto.src = e.target.result;
+            foto.style.display = 'block'; // Exibe a imagem
+            foto.alt = 'Pré-visualização da imagem';
+
+            const verificacao = localStorage.setItem('verificacao', 2);
+        }
+        reader.readAsDataURL(file); // Converte a imagem para um formato que o navegador pode mostrar
+
+    }else{
+        console.error('Nenhum arquivo Selecionado');
     }
-        
+    
+    
+}
 
 
 
@@ -272,3 +346,4 @@ if(botaoSelecionar){
 }
 
 document.getElementById('form-animal-atualizacao').addEventListener('submit', atualizarAnimal);
+document.getElementById('inserir-imagem').addEventListener('change', previewImage);
