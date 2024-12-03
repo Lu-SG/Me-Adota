@@ -122,10 +122,7 @@ if(animal.porte === 'P')
                                 console.error('A imagem não contém dados.');
                             }
                             
-                            const foto_animal = localStorage.setItem('foto', animal.foto);
-                            const mime_type = localStorage.setItem('mime_type', animal.mime_type);
 
-                            const verificacao = localStorage.setItem('verificacao', 1);
 
 }, 200);
 
@@ -225,16 +222,8 @@ async function atualizarAnimal(event){
 
     if(validarNumero() == true)
         {
-            const verificacao = localStorage.getItem('verificacao');
-
-            if(verificacao == 1)
-            {
-                const fileInput = document.getElementById('inserir-imagem'); 
-                    const file = fileInput.files[0]; 
-                    const reader = new FileReader();
-                reader.onloadend = async () => { 
-                    const base64Image = reader.result.split(',')[1];
-                var animalData = { 
+            
+                const animalData = { 
                     nome, 
                     idade, 
                     especie, 
@@ -251,46 +240,15 @@ async function atualizarAnimal(event){
                     doenca_cronica, 
                     necessidade_especial, 
                     necessidade_atencao,
-                    foto: base64Image, // Inclui a imagem codificada em Base64 
-                    mime_type: file.type,
                     desc_necessidade,
                     bairro,
                     id_animal
             }
-            }
-        }
-            if(verificacao == 2)
-                {
-                    const fileInput = document.getElementById('inserir-imagem'); 
-                    const file = fileInput.files[0]; 
-                    const reader = new FileReader();
-                reader.onloadend = async () => { 
-                    const base64Image = reader.result.split(',')[1]; 
-                    var animalData = { 
-                    nome, 
-                    idade, 
-                    especie, 
-                    raca, 
-                    sexo, 
-                    porte, 
-                    numero, 
-                    rua, 
-                    cidade, 
-                    estado, 
-                    complemento, 
-                    data_resgate, 
-                    convivencia, 
-                    doenca_cronica, 
-                    necessidade_especial, 
-                    necessidade_atencao,
-                    foto: base64Image, // Inclui a imagem codificada em Base64 
-                    mime_type: file.type,
-                    desc_necessidade,
-                    bairro,
-                    id_animal
-            }
-        } 
-                };
+            
+        
+            
+        
+                
                 
             try {
                 const response = await fetch(`http://localhost:3001/api/animais/atualizarAnimal/${id_animal}`, {
@@ -301,6 +259,8 @@ async function atualizarAnimal(event){
                 if (response.ok) {
                     
                     alert("Animal atualizado com sucesso!");
+                    window.location.href = "buscarAnimalADM.html";
+
                 } else {
                     alert("Erro ao atualizar animal.");
                 }
@@ -309,11 +269,38 @@ async function atualizarAnimal(event){
             }
             }
         }
-    
+        async function excluirAnimal(){
+            const id_animal = localStorage.getItem('id_animal');
+            const API_URL_EXCLUSAO = `http://localhost:3001/api/animais/excluirAnimal/${id_animal}`;
+            const valores = {id_animal};
+        
+            const confirmar = confirm("Tem certeza que deseja excluir o animal? Esta ação não pode ser desfeita.");
+        
+            if(confirmar)
+            {
+                try {
+                    const response = await fetch(API_URL_EXCLUSAO, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(valores)
+                });
+                if (response.ok) {
+                    alert("Animal Excluído com sucesso.");
+                
+                    window.location.href = "buscarAnimalADM.html";
+                } else {
+                    alert("Erro ao excluir animal.");
+                }
+                } catch (err) {
+                console.error("Erro ao excluir animal:", err);
+                }
+            }
+            
+        }
         
     
 
-function previewImage(event) {
+/*function previewImage(event) {
     const input = event.target;
 
     const file = input.files[0];
@@ -336,7 +323,7 @@ function previewImage(event) {
     }
     
     
-}
+}*/
 
 
 
@@ -346,4 +333,5 @@ if(botaoSelecionar){
 }
 
 document.getElementById('form-animal-atualizacao').addEventListener('submit', atualizarAnimal);
-document.getElementById('inserir-imagem').addEventListener('change', previewImage);
+document.getElementById('excluir-animal').addEventListener('click', excluirAnimal);
+//document.getElementById('inserir-imagem').addEventListener('change', previewImage);

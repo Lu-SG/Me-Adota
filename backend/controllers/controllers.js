@@ -221,3 +221,21 @@ export const checkEmail = async (req, res) => {
                 res.status(500).send('Erro ao acessar o banco de dados.');
             }
         }
+
+        export const excluirAnimal = async (req, res) => {
+            const {id_animal} = req.body;
+
+            try{
+                const animalDelete = await model.deleteAnimalById(id_animal);
+                if(animalDelete){
+                    res.status(200).send('Animal Excluído com sucesso.');
+                }
+                else{
+                    res.status(404).send('Animal não encontrado');
+                }
+
+            }catch(error){
+                console.error(error);
+                res.status(500).send('Erro ao excluir Animal');
+            }
+        }

@@ -166,6 +166,8 @@ async function addAnimal(event) {
                 if (response.ok) {
                     
                     alert("Animal cadastrado com sucesso!");
+                    window.location.href = "buscarAnimalADM.html";
+
                 } else {
                     alert("Erro ao cadastrar animal.");
                 }
