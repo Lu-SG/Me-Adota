@@ -168,8 +168,8 @@ async function addUser(event) {
     }
 
 
-
-    const email = document.getElementById('email').value;
+    let email = '';
+    email = document.getElementById('email').value;
     
 
     async function validarDados(event) { 
@@ -188,10 +188,25 @@ async function addUser(event) {
             if (response.ok) {
                 alert("Cadastro realizado com sucesso!");
             
+                const emailString = email;
+                const emailAdm = '@meadota.com';
+
+                const ehADM = emailString.includes(emailAdm);
+
+
+
                 localStorage.setItem('emailUsuario', email);
             
-            
+            if(ehADM)
+            {
+                window.location.href = 'buscarAnimalADM.html';
+            }
+            else{
                 window.location.href = 'buscarAnimal.html';
+            }
+
+
+
             } else {
                 alert("Erro ao Realizar o cadastro.");
             }

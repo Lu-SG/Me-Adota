@@ -64,9 +64,18 @@ async function checkEmail(event) {
         if (response.ok) {
             alert("Login efetuado com sucesso!");
             localStorage.setItem('emailUsuario', email);
+            const emailString = email;
+            const emailAdm = '@meadota.com';
 
+            const ehADM = emailString.includes(emailAdm);
 
-            window.location.href = 'buscarAnimal.html';
+            if(ehADM)
+              {
+                  window.location.href = 'buscarAnimalADM.html';
+              }
+              else{
+                  window.location.href = 'buscarAnimal.html';
+              }
 
         } else {
             alert("Email e/ou senha incorretos");
