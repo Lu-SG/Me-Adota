@@ -3,9 +3,7 @@ const API_URL = 'http://localhost:3001/api/usuarios';
 
 async function addUser(event) {
     event.preventDefault();
-
     const nome = document.getElementById('nome').value;
-    const telefone = document.getElementById('telefone').value;
     const estado = document.getElementById('estado').value;
     const cidade = document.getElementById('cidade').value;
     const bairro = document.getElementById('bairro').value;
@@ -125,7 +123,37 @@ async function addUser(event) {
                 return false; 
             } 
     }
-  
+    let telefoneUsuario = '';
+    telefoneUsuario = document.getElementById('telefone').value;
+
+  let telefone = '';
+    function formatarTelefone(telefoneUsuario) { 
+        const parte1 = telefoneUsuario.slice(0, 2); 
+        const parte2 = telefoneUsuario.slice(2, 7); 
+        const parte3 = telefoneUsuario.slice(7); 
+        return  `(${parte1})${parte2}-${parte3}`; 
+    }
+
+    function validarTelefone(telefoneUsuario){
+        if(telefoneUsuario.length == 11){
+            telefone = formatarTelefone(telefoneUsuario);
+            return true;
+        }
+        else{
+            if(telefoneUsuario.length < 11 )
+            {
+                alert("Digite todos os 11 dígitos do telefone.")
+            }
+            else{
+                alert("Digite apenas os números do telefone, por favor!");
+            }
+            return false;
+        }
+
+    }
+
+
+
     function validarSenha()
         {
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/; 
@@ -140,19 +168,7 @@ async function addUser(event) {
         }
     }
 
-    function validarTelefone()
-    {
-        const phoneRegex = /^\(\d{2}\)\d{5}-\d{4}$/; 
-        if (phoneRegex.test(telefone)) 
-            { 
-                return true; 
-            } 
-            else 
-            { 
-                alert('Número de telefone inválido. O formato correto é (00)00000-0000.');
-                return false; 
-            }
-    }
+    
 
     function validarNumero()
     {
@@ -174,7 +190,7 @@ async function addUser(event) {
 
     async function validarDados(event) { 
         
-        if(validarEmail() == true && validarSenha() == true && validarTelefone() == true && validarNumero() == true)
+        if(validarEmail() == true && validarSenha() == true && validarTelefone(telefoneUsuario) == true && validarNumero() == true)
         {
             senha = await storeHashedPassword(senha); 
             const newUser = { nome, email, telefone, senha, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal };
@@ -186,6 +202,7 @@ async function addUser(event) {
                 body: JSON.stringify(newUser)
             });
             if (response.ok) {
+                alert(telefone);
                 alert("Cadastro realizado com sucesso!");
             
                 const emailString = email;

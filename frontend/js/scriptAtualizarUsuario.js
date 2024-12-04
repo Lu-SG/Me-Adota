@@ -19,7 +19,21 @@ setTimeout(async function setarDados() {
 
                 const userData = JSON.stringify(user);
 
-                document.getElementById('telefone').value = user.telefone;
+                let telefoneBanco = '';
+                telefoneBanco = user.telefone;
+
+
+
+                function converterTelefone(telefoneBanco){
+                    const parte1 = telefoneBanco.slice(1, 3);
+                    const parte2 = telefoneBanco.slice(4, 9);
+                    const parte3 = telefoneBanco.slice(10);
+
+                    return `${parte1}${parte2}${parte3}`;
+
+                }
+
+                document.getElementById('telefone').value = converterTelefone(telefoneBanco);
                 document.getElementById('estado').value = user.estado;
                 document.getElementById('cidade').value = user.cidade;
                 document.getElementById('bairro').value = user.bairro;
@@ -128,7 +142,6 @@ async function atualizarUsuario(event) {
     const email = localStorage.getItem('emailUsuario');
     const API_URL_ATUALIZACAO = `http://localhost:3001/api/usuarios/atualizarUsuario/${email}`
 
-    const telefone = document.getElementById('telefone').value;
     const estado = document.getElementById('estado').value;
     const cidade = document.getElementById('cidade').value;
     const bairro = document.getElementById('bairro').value;
@@ -193,19 +206,32 @@ async function atualizarUsuario(event) {
     }
     event.preventDefault();
 
+    let telefoneUsuario = '';
+    telefoneUsuario = document.getElementById('telefone').value;
 
-    function validarTelefone()
-    {
-        const phoneRegex = /^\(\d{2}\)\d{5}-\d{4}$/; 
-        if (phoneRegex.test(telefone)) 
-            { 
-                return true; 
-            } 
-            else 
-            { 
-                alert('Número de telefone inválido. O formato correto é (00)00000-0000.');
-                return false; 
+    let telefone = '';
+    function formatarTelefone(telefoneUsuario) { 
+        const parte1 = telefoneUsuario.slice(0, 2); 
+        const parte2 = telefoneUsuario.slice(2, 7); 
+        const parte3 = telefoneUsuario.slice(7); 
+        return  `(${parte1})${parte2}-${parte3}`; 
+    }
+    function validarTelefone(telefoneUsuario){
+        if(telefoneUsuario.length == 11){
+            telefone = formatarTelefone(telefoneUsuario);
+            return true;
+        }
+        else{
+            if(telefoneUsuario.length < 11 )
+            {
+                alert("Digite todos os 11 dígitos do telefone.")
             }
+            else{
+                alert("Digite apenas os números do telefone, por favor!");
+            }
+            return false;
+        }
+
     }
 
     function validarNumero()
@@ -221,7 +247,7 @@ async function atualizarUsuario(event) {
             }
     }
 
-    if(validarTelefone() == true && validarNumero() == true)
+    if(validarTelefone(telefoneUsuario) == true && validarNumero() == true)
         {
             const updateUserData = { telefone, estado, cidade, bairro, rua, numero, complemento, especie_desejada, porte_desejado, sexo_desejado, aceita_necessidade_especial, aceita_doenca_cronica, ja_tem_outros_animais, tem_tempo_pro_animal, email };
 
@@ -294,5 +320,14 @@ const botaoPerfil = document.getElementById('botao-perfil');
 if(botaoPerfil){
     document.getElementById('botao-perfil').addEventListener('click', setarDados);
 }
-document.getElementById('form-usuario-atualizacao').addEventListener('submit', atualizarUsuario);
-document.getElementById('excluir-conta').addEventListener('click', excluirConta);
+
+const formUsuario = document.getElementById('form-usuario-atualizacao');
+if(formUsuario){
+    document.getElementById('form-usuario-atualizacao').addEventListener('submit', atualizarUsuario);
+}
+
+const botaoExcluir = document.getElementById('excluir-conta');
+if(botaoExcluir)
+{
+    document.getElementById('excluir-conta').addEventListener('click', excluirConta);
+}

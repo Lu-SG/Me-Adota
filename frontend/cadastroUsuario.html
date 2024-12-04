@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="css/padrao.css">
     <link rel="stylesheet" href="css/formulario.css">
+
 </head>
 <body>
     <header>
@@ -20,8 +21,8 @@
     </header>
     
     <main>
-        <form onsubmit="return validarDados(event)" class="columns wraps" id="form-usuario" method="post" enctype="multipart/form-data"  >
-            
+        <form   class="columns wraps" id="form-usuario" method="post" enctype="multipart/form-data"  >
+          <!--  onsubmit="return validarDados(event)" -->
             <h1 class="form-titulo">Cadastro</h1>
             
             <div class="form-inputs columns wraps" >
@@ -212,5 +213,6 @@
 
     <script type="module" src="js/scriptUsuario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/crypto-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.15/inputmask.min.js"></script>
 </body>
 </html>
