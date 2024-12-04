@@ -68,14 +68,34 @@ header{
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     font-weight: 600;
 }
+.botaoAdm {
+    width: 200px;
+    margin: 0px 5px;
+    padding: 20px;
+    color: #2b335a;
+    border: 1px solid;
+    border-radius: 8px;
 
+    background: linear-gradient(to top, #f7f7f7 50%, #2b335a 50%);
+    background-size: 100% 200%;
+    background-position: 0 100%;
+    transition: background-position 0.3s ease, color 0.3s ease;
+
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
 .botao:hover {
     background-position: 0 0;
     color: #f7f7f7;
     cursor: pointer;
     border-color: black;
 }
-
+.botaoAdm:hover{
+    background-position: 0 0;
+    color: #f7f7f7;
+    cursor: pointer;
+    border-color: black;
+}
 footer{
     padding: 10px;
     background-color: rgb(211, 211, 211);
