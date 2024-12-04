@@ -184,6 +184,15 @@ export function calcularCompatibilidade(usuario, animal) {
         
     }
 
+
+
+
+
+
+
+
+
+    
     if (usuario.aceita_doenca_cronica === 'sim' && animal.doenca_cronica === 'sim')
     {
         pontos += 10; 
@@ -194,16 +203,35 @@ export function calcularCompatibilidade(usuario, animal) {
         pontos += 5;
     }
     
+    if(usuario.aceita_doenca_cronica === 'sim' && animal.doenca_cronica === 'nao')
+    {
+        pontos += 5;
+    }
+
+
+
+
     if(usuario.ja_tem_outros_animais === animal.convivencia)
     {
         pontos += 5;
     }
+
+    if(usuario.ja_tem_outros_animais === 'nao' && animal.convivencia === 'sim')
+    {
+        pontos += 5;
+    }
+
+
 
     if(usuario.tem_tempo_pro_animal === 'sim' && animal.necessidade_atencao === 'sim')
     {
         pontos += 5;
     }
 
+    if(usuario.tem_tempo_pro_animal === 'sim' && animal.necessidade_atencao === 'nao')
+    {
+        pontos += 5;
+    }
     return pontos;
 }
 

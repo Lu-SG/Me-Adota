@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar pets compatíveis</title>
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    
+</head>
+<body>
+    <header>
+        <a href="index.html" class="tela-inicial"><h1 class="titulo-header">Me Adota</h1></a>
+
+        <nav>
+        </nav>
+    </header>
+    
+    <main>
+        <button class="botao" id="fale-conosco" >Fale Conosco!</button>
+    <div id="numero" >
+        
+    </div>
+    
+    </main>
+
+    <script>
+        document.getElementById('fale-conosco').addEventListener('click', function(){
+            const div = document.getElementById('numero');
+            div.innerHTML = '(51)99999-9999';
+        })
+    </script>
+</body>
+</html>

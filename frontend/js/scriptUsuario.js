@@ -202,7 +202,6 @@ async function addUser(event) {
                 body: JSON.stringify(newUser)
             });
             if (response.ok) {
-                alert(telefone);
                 alert("Cadastro realizado com sucesso!");
             
                 const emailString = email;
